@@ -1,10 +1,17 @@
+
+using System.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Geres4U.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<AppDBContext>(options => options.UseMySQL(configuration.GetConnectionString("Default")));
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

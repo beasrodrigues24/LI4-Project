@@ -28,5 +28,41 @@ namespace Geres4U.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public ActionResult SignUpClient()
+        {
+            ViewBag.Message = "Client SignUp";
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignUpClient(ClientModel c)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index"); // se funcionar vai dar redirect para "Index" TODO: alterar para o sítio correto de redirect
+            }
+
+            return View();
+        }
+
+        public ActionResult SignUpRev()
+        {
+            ViewBag.Message = "Reviser SignUp";
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignUpRev(ReviserModel r)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index"); // se funcionar vai dar redirect para "Index" TODO: alterar para o sítio correto de redirect
+            }
+
+            return View();
+        }
     }
 }

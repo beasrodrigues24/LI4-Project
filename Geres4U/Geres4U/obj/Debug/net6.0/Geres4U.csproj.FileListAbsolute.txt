@@ -1,0 +1,10 @@
+C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net6.0\Geres4U.csproj.AssemblyReference.cache
+C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net6.0\Interop.MSDATASRC.dll
+C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net6.0\Geres4U.csproj.ResolveComReference.cache
+C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net6.0\Geres4U.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net6.0\Geres4U.AssemblyInfoInputs.cache
+C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net6.0\Geres4U.AssemblyInfo.cs
+C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net6.0\Geres4U.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net6.0\Geres4U.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net6.0\Geres4U.RazorAssemblyInfo.cache
+C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net6.0\Geres4U.RazorAssemblyInfo.cs

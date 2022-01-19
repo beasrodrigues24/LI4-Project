@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Utilizador\\Documents\\3 ano\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj": {}
+    "C:\\Users\\ASUS\\Documents\\GitHub\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Utilizador\\Documents\\3 ano\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj": {
+    "C:\\Users\\ASUS\\Documents\\GitHub\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Utilizador\\Documents\\3 ano\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj",
         "projectName": "Geres4U",
-        "projectPath": "C:\\Users\\Utilizador\\Documents\\3 ano\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj",
-        "packagesPath": "C:\\Users\\Utilizador\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Utilizador\\Documents\\3 ano\\LI4-Project\\Geres4U\\Geres4U\\obj\\",
+        "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\LI4-Project\\Geres4U\\Geres4U\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Utilizador\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +43,20 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Owin.Host.SystemWeb": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.8, )"
+            },
+            "NuGet.Frameworks": {
+              "target": "Package",
+              "version": "[4.6.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
