@@ -1,15 +1,15 @@
 {
   "Version": 1,
   "ProjectMap": {
+    "6ae73549-f91c-4c6b-ac3c-19af6185ee55": {
+      "ProjectGuid": "6ae73549-f91c-4c6b-ac3c-19af6185ee55",
+      "DisplayName": "Geres4U",
+      "ColorIndex": 0
+    },
     "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Arquivos Diversos",
       "ColorIndex": -1
-    },
-    "0f34b2f5-fae0-4dc7-accb-89c9f0033ad7": {
-      "ProjectGuid": "0f34b2f5-fae0-4dc7-accb-89c9f0033ad7",
-      "DisplayName": "Geres4U",
-      "ColorIndex": 0
     }
   },
   "NextColorIndex": 1

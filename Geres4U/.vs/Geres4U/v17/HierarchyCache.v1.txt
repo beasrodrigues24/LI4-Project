@@ -3,29 +3,13 @@ i:{00000000-0000-0000-0000-000000000000}:Geres4U.sln
 ++Geres4U
 i:{00000000-0000-0000-0000-000000000000}:Geres4U
 ++Connected Services 
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>287
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>627
+++Banco de Dados do SQL Server
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>783
+++Plataforma de identidade Microsoft
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>781
 ++Dependências
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>286
-++Properties
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\properties\
-++wwwroot
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\
-++Controllers
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\controllers\
-++DataAccess
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\dataaccess\
-++AppDBContext.cs
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\dataaccess\appdbcontext.cs
-++Models
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\
-++Views
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\
-++appsettings.json
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\appsettings.json
-++Program.cs
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\program.cs
-++Nenhuma dependência de serviço descoberta
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>288
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>626
 ++Analisadores
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:analisadores
 ++COM
@@ -34,6 +18,82 @@ i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:com
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:estruturas
 ++Pacotes
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:pacotes
+++Microsoft.EntityFrameworkCore.Tools (5.0.10)
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>791
+++Microsoft.Owin.Host.SystemWeb (4.2.0)
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>650
+++MySql.EntityFrameworkCore (5.0.8)
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>651
+++NuGet.Frameworks (4.6.4)
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>649
+++Properties
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\properties\
+++wwwroot
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\
+++Controllers
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\controllers\
+++HomeController.cs
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\controllers\homecontroller.cs
+++Data
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\data\
+++AppDBContext.cs
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\data\appdbcontext.cs
+++Models
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\
+++CategoryModel.cs
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\categorymodel.cs
+++ClientHistoryModel.cs
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\clienthistorymodel.cs
+++ClientModel.cs
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\clientmodel.cs
+++ErrorViewModel.cs
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\errorviewmodel.cs
+++PointOfInterestCategoryModel.cs
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\pointofinterestcategorymodel.cs
+++PointOfInterestModel.cs
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\pointofinterestmodel.cs
+++ReviserModel.cs
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\revisermodel.cs
+++Views
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\
+++Home
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\home\
+++Shared
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\shared\
+++_ViewImports.cshtml
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\_viewimports.cshtml
+++_ViewStart.cshtml
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\_viewstart.cshtml
+++appsettings.json
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\appsettings.json
+++appsettings.Development.json
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\appsettings.development.json
+++Program.cs
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\program.cs
+++Foi detectada a dependência de Banco de Dados do SQL Server
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>784
+++Foi detectada a dependência de Plataforma de identidade Microsoft
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>782
+++Microsoft.AspNetCore.Analyzers
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Mvc.Analyzers
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++Microsoft.EntityFrameworkCore.Analyzers
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\.nuget\packages\microsoft.entityframeworkcore.analyzers\5.0.10\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+++{bee4bfec-6683-3e67-9167-3c0cbc68f40a}
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\{bee4bfec-6683-3e67-9167-3c0cbc68f40a}
+++Interop.MSDATASRC
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\obj\debug\net5.0\interop.msdatasrc.dll
+++Microsoft.AspNetCore.App
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\microsoft.aspnetcore.app
+++Microsoft.NETCore.App
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\microsoft.netcore.app
 ++launchSettings.json
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\properties\launchsettings.json
 ++css
@@ -46,76 +106,16 @@ i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-proj
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\lib\
 ++favicon.ico
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\favicon.ico
-++HomeController.cs
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\controllers\homecontroller.cs
-++CategoryModel.cs
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\categorymodel.cs
-++ClientModel.cs
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\clientmodel.cs
-++ErrorViewModel.cs
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\errorviewmodel.cs
-++PointOfInterestModel.cs
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\pointofinterestmodel.cs
-++ReviserModel.cs
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\models\revisermodel.cs
-++Home
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\home\
-++Shared
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\shared\
-++_ViewImports.cshtml
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\_viewimports.cshtml
-++_ViewStart.cshtml
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\_viewstart.cshtml
-++appsettings.Development.json
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\appsettings.development.json
-++Microsoft.AspNetCore.Analyzers
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
-++Microsoft.AspNetCore.App.Analyzers
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
-++Microsoft.AspNetCore.App.CodeFixes
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.codefixes.dll
-++Microsoft.AspNetCore.Components.Analyzers
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
-++Microsoft.AspNetCore.Mvc.Analyzers
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
-++Microsoft.AspNetCore.Razor.Internal.SourceGenerator.Transport
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.internal.sourcegenerator.transport.dll
-++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
-++Microsoft.CodeAnalysis.NetAnalyzers
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
-++Microsoft.EntityFrameworkCore.Analyzers
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\.nuget\packages\microsoft.entityframeworkcore.analyzers\5.0.8\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
-++Microsoft.Extensions.Logging.Generators
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
-++Microsoft.NET.Sdk.Razor.SourceGenerators
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\sdk\6.0.101\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
-++System.Text.Json.SourceGeneration
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.1\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
-++{bee4bfec-6683-3e67-9167-3c0cbc68f40a}
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\{bee4bfec-6683-3e67-9167-3c0cbc68f40a}
-++Interop.MSDATASRC
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\obj\debug\net6.0\interop.msdatasrc.dll
-++Microsoft.AspNetCore.App
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\microsoft.aspnetcore.app
-++Microsoft.NETCore.App
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\microsoft.netcore.app
-++Microsoft.Owin (4.2.0)
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>314
-++Microsoft.Owin.Host.SystemWeb (4.2.0)
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>310
-++Microsoft.Owin.Security (4.2.0)
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>312
-++Microsoft.Owin.Security.Cookies (4.2.0)
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>316
-++Microsoft.Owin.Security.OAuth (4.2.0)
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>315
-++MySql.EntityFrameworkCore (5.0.8)
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>313
-++NuGet.Frameworks (4.6.4)
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>309
-++Owin (1.0.0)
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:>311
+++Index.cshtml
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\home\index.cshtml
+++Privacy.cshtml
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\home\privacy.cshtml
+++_Layout.cshtml
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\shared\_layout.cshtml
+++_ValidationScriptsPartial.cshtml
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\shared\_validationscriptspartial.cshtml
+++Error.cshtml
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\shared\error.cshtml
 ++site.css
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\css\site.css
 ++site.js
@@ -128,16 +128,8 @@ i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-proj
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\lib\jquery-validation\
 ++jquery-validation-unobtrusive
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\lib\jquery-validation-unobtrusive\
-++Index.cshtml
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\home\index.cshtml
-++Privacy.cshtml
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\home\privacy.cshtml
-++_Layout.cshtml
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\shared\_layout.cshtml
-++_ValidationScriptsPartial.cshtml
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\shared\_validationscriptspartial.cshtml
-++Error.cshtml
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\shared\error.cshtml
+++_Layout.cshtml.css
+i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\shared\_layout.cshtml.css
 ++dist
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\lib\bootstrap\dist\
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\lib\jquery\dist\
@@ -151,8 +143,6 @@ i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-proj
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\lib\jquery-validation\license.md
 ++jquery.validate.unobtrusive.js
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
-++_Layout.cshtml.css
-i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\views\shared\_layout.cshtml.css
 ++jquery.js
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\lib\jquery\dist\jquery.js
 ++additional-methods.js
@@ -257,4 +247,3 @@ i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-proj
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
 ++bootstrap.esm.min.js.map
 i:{0f34b2f5-fae0-4dc7-accb-89c9f0033ad7}:c:\users\asus\documents\github\li4-project\geres4u\geres4u\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
-++Startup.cs

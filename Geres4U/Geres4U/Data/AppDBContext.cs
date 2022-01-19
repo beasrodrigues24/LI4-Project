@@ -7,18 +7,18 @@ namespace Geres4U.Data
     {
         public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
         {
-            
+
         }
 
-        public DbSet<ClientModel> Client { get; set; }
-        public DbSet<ReviserModel> Reviser { get; set; }
+        public DbSet<Client> Client { get; set; }
+        public DbSet<Reviser> Reviser { get; set; }
 
-        public DbSet<CategoryModel> Category { get; set; }
+        public DbSet<Category> Category { get; set; }
 
-        public DbSet<PointOfInterestModel> PointOfInterest { get; set; }
+        public DbSet<PointOfInterest> PointOfInterest { get; set; }
 
-        public DbSet<PointOfInterestCategoryModel> PointOfInterestCategory { get; set; }
+        public DbSet<PointOfInterestCategory> PointOfInterestCategory { get; set; }
 
-        public DbSet<ClientHistoryModel> ClientHistory { get; set; }
+        public DbSet<ClientHistory> ClientHistory { get; set; }
     }
 }

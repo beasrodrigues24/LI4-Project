@@ -1,6 +1,11 @@
 ﻿using Geres4U.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Geres4U.Controllers
 {
@@ -28,7 +33,6 @@ namespace Geres4U.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
         public ActionResult SignUpClient()
         {
             ViewBag.Message = "Client SignUp";
@@ -37,7 +41,7 @@ namespace Geres4U.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignUpClient(ClientModel c)
+        public ActionResult SignUpClient(Client c)
         {
             if (ModelState.IsValid)
             {
@@ -55,7 +59,7 @@ namespace Geres4U.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignUpRev(ReviserModel r)
+        public ActionResult SignUpRev(Reviser r)
         {
             if (ModelState.IsValid)
             {
