@@ -6,9 +6,10 @@ namespace Geres4U.Models
 {
     public class PointOfInterest
     {
-        public String ID { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "You need to provide the name of the point of interest.")]
+        [MaxLength(64, ErrorMessage = "Maximum name length is 64 characters")]
         public String Name { get; set; }
 
         public String ImagePath { get; set; }
@@ -21,6 +22,7 @@ namespace Geres4U.Models
 
         public Boolean IsSugestion { get; set; }
 
+        [MaxLength(255)]
         public String Description { get; set; }
 
         public HashSet<Category> Categories { get; set; }

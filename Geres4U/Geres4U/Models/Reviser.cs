@@ -7,6 +7,7 @@ namespace Geres4U.Models
     {
         [Display(Name = "Email")]
         [Required(ErrorMessage = "You need to provide an email")]
+        [MaxLength(150, ErrorMessage = "Maximum size of email is 150 characters.")]
         [DataType(DataType.EmailAddress)] // valida se o endereço de email é válido
         public String Email { get; set; }
 

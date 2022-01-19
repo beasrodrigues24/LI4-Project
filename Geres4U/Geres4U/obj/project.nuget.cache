@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "gB+c62+StksNB2CNVdRDAat+vP67ca8kvxnDBib/8pzcdQixNLsjqQpBRZTRs6AwqXB95s/F9R87V8MtON9u4A==",
+  "dgSpecHash": "SruJGm/whQAcaZnSJoJh7zAIy5/JS4zBKloHSC+Tg1mI2inzzWdRePDi5h0en583p0Y0I0NULHJMYElR+2FTpA==",
   "success": true,
   "projectFilePath": "C:\\Users\\ASUS\\Desktop\\Geres4U\\Geres4U\\Geres4U.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",
