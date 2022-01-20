@@ -12,5 +12,11 @@ namespace Geres4U.Data.DataModels
             ID = id;
             Name = "";
         }
+
+        public CategoryDataModel(Int32 ID, String Name)
+        {
+            this.ID = ID;
+            this.Name = Name;
+        }
     }
 }

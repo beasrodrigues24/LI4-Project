@@ -1,16 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace Geres4U.Data.DataModels
 {
     public class PointOfInterestDataModel
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Images { get; set; }
-        public double Lat { get; set; }
-        public double Long { get; set; }
-        public bool isSugestion { get; set; }
-        public string Description { get; set; }
+        public Int32 ID { get; set; }
+        public String Name { get; set; }
+        public String Images { get; set; }
+        public Double Lat { get; set; }
+        public Double Long { get; set; }
+        public SByte isSugestion { get; set; }
+        public String Description { get; set; }
 
         public PointOfInterestDataModel(int ID)
         {
@@ -19,11 +20,11 @@ namespace Geres4U.Data.DataModels
             this.Images = null;
             this.Lat = -1;
             this.Long = -1;
-            this.isSugestion = false;
+            this.isSugestion = 0;
             this.Description = null;
         }
 
-        public PointOfInterestDataModel(int ID, string Name, string Images, double Lat, double Long, bool isSugestion, string description)
+        public PointOfInterestDataModel(int ID, string Name, string Images, double Lat, double Long, SByte isSugestion, string description)
         {
             this.ID = ID;
             this.Name = Name;
@@ -32,6 +33,11 @@ namespace Geres4U.Data.DataModels
             this.Long = Long;
             this.isSugestion = isSugestion;
             this.Description = description;
+        }
+
+        public PointOfInterestDataModel()
+        {
+
         }
     }
 }

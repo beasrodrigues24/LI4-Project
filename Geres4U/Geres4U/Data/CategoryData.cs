@@ -21,7 +21,7 @@ namespace Geres4U.Data
 
         public Task<List<CategoryDataModel>> getCategory(CategoryDataModel c)
         {
-            string sql = "SELECT * FROM geres4udb.Category WHERE ID = @ID";
+            string sql = @"SELECT * FROM geres4udb.Category WHERE ID =" + c.ID;
             return _db.LoadData<CategoryDataModel, dynamic>(sql, c);
         }
     }

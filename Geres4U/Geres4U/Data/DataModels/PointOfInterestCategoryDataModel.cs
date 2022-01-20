@@ -1,4 +1,6 @@
-﻿namespace Geres4U.Data.DataModels
+﻿using System;
+
+namespace Geres4U.Data.DataModels
 {
     public class PointOfInterestCategoryDataModel
     {
@@ -10,6 +12,12 @@
         {
             CategoryID = -1;
             PointOfInterestID = pointOfInterestId;
+        }
+
+        public PointOfInterestCategoryDataModel(Int32 CategoryID, Int32 PointOfInterestID)
+        {
+            this.CategoryID = CategoryID;
+            this.PointOfInterestID = PointOfInterestID;
         }
     }
 }
