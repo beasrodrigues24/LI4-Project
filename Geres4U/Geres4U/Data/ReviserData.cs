@@ -19,13 +19,5 @@ namespace Geres4U.Data
             return _db.LoadData<ReviserDataModel, dynamic>(sql, reviser);
         }
 
-        public Task InsertReviser(ReviserDataModel reviser)
-        {
-            string sql = @"IF NOT EXISTS (SELECT * FROM geres4udb.Reviser WHERE Email = @Email)
-                           BEGIN
-                           INSERT INTO geres4udb.Reviser (Email, Password)
-                           VALUES (@Email, @Password)";
-            return _db.SaveData(sql, reviser);
-        }
     }
 }
