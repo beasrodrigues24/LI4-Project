@@ -1,5 +1,4 @@
 ﻿
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Geres4U.Models
@@ -11,6 +10,6 @@ namespace Geres4U.Models
 
         [Required]
         [MaxLength(45)]
-        public String Name { get; set; }
+        public string Name { get; set; }
     }
 }

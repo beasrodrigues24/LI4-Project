@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Geres4U.Data.DataModels;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Geres4U.Data
 {

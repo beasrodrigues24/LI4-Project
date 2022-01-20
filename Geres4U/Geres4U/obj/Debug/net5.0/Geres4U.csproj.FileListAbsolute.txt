@@ -335,3 +335,4 @@ C:\Users\Lenovo\OneDrive\Documentos\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug
 C:\Users\Lenovo\OneDrive\Documentos\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net5.0\Razor\Views\Home\SignUpClient.cshtml.g.cs
 C:\Users\ASUS\Documents\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net5.0\Razor\Views\Home\SignUpClient.cshtml.g.cs
 C:\Users\Lenovo\OneDrive\Documentos\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net5.0\Razor\Views\Home\SignIn.cshtml.g.cs
+C:\Users\Lenovo\OneDrive\Documentos\GitHub\LI4-Project\Geres4U\Geres4U\obj\Debug\net5.0\Razor\Views\Client\Index.cshtml.g.cs
