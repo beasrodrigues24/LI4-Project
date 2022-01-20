@@ -28,6 +28,13 @@ namespace Geres4U.Data
             return _db.SaveData(sql, clientHistory);
         }
 
+        public Task RemoveHistory(ClientHistoryDataModel client)
+        {
+            string sql = @"DELETE FROM dbo.ClientHistory 
+                           WHERE ClientID = @ClientID AND PointOfInterestID = @PointOfInterestID";
+            return _db.SaveData(sql, client);
+        }
+
         // maybe colocar isto noutro sítio
         public List<PointOfInterestDataModel> getHistoryFromClient(string email)
         {

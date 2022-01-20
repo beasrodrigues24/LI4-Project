@@ -8,6 +8,7 @@ namespace Geres4U.Data
     {
         public Task<List<ClientHistoryDataModel>> getHistoryDataModelFromClient(ClientHistoryDataModel c);
         public Task InsertHistory(ClientHistoryDataModel clientHistory);
+        Task RemoveHistory(ClientHistoryDataModel client);
         public List<PointOfInterestDataModel> getHistoryFromClient(string email);
     }
 }

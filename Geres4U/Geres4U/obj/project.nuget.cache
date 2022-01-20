@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SruJGm/whQAcaZnSJoJh7zAIy5/JS4zBKloHSC+Tg1mI2inzzWdRePDi5h0en583p0Y0I0NULHJMYElR+2FTpA==",
+  "dgSpecHash": "/Tm/zEGXkgKrWreAxpdqj2aghzYvER6B4p9I/+BAoEZ8PGHZoWv9eKG5X9pya/zUqA6iB/Yy/spWbfgfqYtCMA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\Geres4U\\Geres4U\\Geres4U.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\Documents\\GitHub\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",

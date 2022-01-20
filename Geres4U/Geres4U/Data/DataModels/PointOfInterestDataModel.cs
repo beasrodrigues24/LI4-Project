@@ -22,5 +22,16 @@ namespace Geres4U.Data.DataModels
             this.isSugestion = false;
             this.Description = null;
         }
+
+        public PointOfInterestDataModel(int ID, string Name, string Images, double Lat, double Long, bool isSugestion, string description)
+        {
+            this.ID = ID;
+            this.Name = Name;
+            this.Images = Images;
+            this.Lat = Lat;
+            this.Long = Long;
+            this.isSugestion = isSugestion;
+            this.Description = description;
+        }
     }
 }

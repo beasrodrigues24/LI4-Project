@@ -1664,11 +1664,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Geres4U\\Geres4U\\Geres4U.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Documents\\GitHub\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj",
       "projectName": "Geres4U",
-      "projectPath": "C:\\Users\\ASUS\\Desktop\\Geres4U\\Geres4U\\Geres4U.csproj",
+      "projectPath": "C:\\Users\\ASUS\\Documents\\GitHub\\LI4-Project\\Geres4U\\Geres4U\\Geres4U.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Desktop\\Geres4U\\Geres4U\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\Documents\\GitHub\\LI4-Project\\Geres4U\\Geres4U\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

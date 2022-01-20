@@ -4,7 +4,7 @@ using Geres4U.Data.DataModels;
 
 namespace Geres4U.Data
 {
-    public class PointOfInterestData
+    public class PointOfInterestData : IPointOfInterestData
     {
         private readonly IDataAccess _db;
 
@@ -84,6 +84,29 @@ namespace Geres4U.Data
                             VALUES (@ID, @Name, NULL, @Lat, @Long, true, @Description)
                             END";
             return _db.SaveData(sql, pointOfInterest);
+        }
+
+        public Task UpdatePointOfInterest(PointOfInterestDataModel pointOfInterest)
+        {
+            string sql =
+                @"UPDATE dbo.PointOfInterest SET Name = @Name, Images = @Images, Lat = @Lat, Long = @Long, isSugestion = @isSugestion, Description = @Description
+                           WHERE ID = @ID";
+            return _db.SaveData(sql, pointOfInterest);
+        }
+
+        public Task RemovePointOfInterest(PointOfInterestDataModel pointOfInterest)
+        {
+            string sql = @"DELETE FROM dbo.PointOfInterest
+                           WHERE ID = @ID";
+            return _db.SaveData(sql, pointOfInterest);
+        }
+
+        public Task acceptPointOfInterestSugestion(PointOfInterestDataModel pointOfInterest)
+        { 
+            PointOfInterestDataModel p = new PointOfInterestDataModel(pointOfInterest.ID, pointOfInterest.Name,
+                    pointOfInterest.Images, pointOfInterest.Lat, pointOfInterest.Long, false,
+                    pointOfInterest.Description);
+            return UpdatePointOfInterest(p);
         }
     }
 }
