@@ -29,7 +29,7 @@ namespace Geres4U.Controllers
                 foreach (PointOfInterestDataModel pdm in points)
                 {
                     List<CategoryDataModel> cats = pcd.getCategoriesFromPointOfInterest(pdm.ID);
-                    PointOfInterest p = new PointOfInterest(pdm.ID, pdm.Name, pdm.Images, pdm.Lat, pdm.Long, pdm.isSugestion, pdm.Description);
+                    PointOfInterest p = new PointOfInterest(pdm.ID, pdm.Name, pdm.Images, pdm.Lat, pdm.Long, pdm.isSugestion == 1, pdm.Description);
                     if (cats.Count > 0)
                     {
                         List<Category> cat = new List<Category>();
@@ -71,7 +71,7 @@ namespace Geres4U.Controllers
                 PointOfInterest ans = new PointOfInterest(); // vai sempre avançar para o for pq count > 0, mas sou obrigado a inicializar aqui senão não dá pra adicionar categorias
                 foreach (PointOfInterestDataModel pdm in points)
                 {
-                    ans = new PointOfInterest(pdm.ID, pdm.Name, pdm.Images, pdm.Lat, pdm.Long, pdm.isSugestion,
+                    ans = new PointOfInterest(pdm.ID, pdm.Name, pdm.Images, pdm.Lat, pdm.Long, pdm.isSugestion == 1,
                         pdm.Description);
                 }
                 PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
@@ -163,7 +163,7 @@ namespace Geres4U.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool resultOfOp = removePointVisitedDB(p).Result;
+                bool resultOfOp = removePointVisitedDB(p.ID).Result;
                 return View(resultOfOp);
             }
             return View();
@@ -180,7 +180,7 @@ namespace Geres4U.Controllers
                 foreach (PointOfInterestDataModel pid in points)
                 {
                     PointOfInterest p = new PointOfInterest(pid.ID, pid.Name, pid.Images, pid.Lat, pid.Long,
-                        pid.isSugestion, pid.Description);
+                        pid.isSugestion == 1, pid.Description);
                     List<CategoryDataModel> cats = pcd.getCategoriesFromPointOfInterest(pid.ID);
                     if(cats.Count > 0)
                         foreach (CategoryDataModel cat in cats)

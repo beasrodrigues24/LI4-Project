@@ -15,85 +15,77 @@ namespace Geres4U.Data
 
         public Task<List<PointOfInterestDataModel>> GetPointsOfInterest()
         {
-            string sql = @"SELECT (ID, Name, Images, Lat, Long, isSugestion, Description) FROM geres4udb.PointOfInterest 
-                         WHERE isSugestion = false
-                         ORDER BY ID DESC";
+            string sql = @"SELECT * FROM geres4udb.pointofinterest WHERE isSugestion = 0";
             return _db.LoadData<PointOfInterestDataModel, dynamic>(sql, new { });
         }
 
         public Task<List<PointOfInterestDataModel>> getSugestionsPointsOfInterest()
         {
-            string sql = @"SELECT (ID, Name, Images, Lat, Long, isSugestion, Description) FROM geres4udb.PointOfInterest 
-                         WHERE isSugestion = true
-                         ORDER BY ID DESC";
+            string sql = @"SELECT * FROM geres4udb.pointofinterest WHERE isSugestion = 1";
             return _db.LoadData<PointOfInterestDataModel, dynamic>(sql, new { });
         }
 
         public Task<List<PointOfInterestDataModel>> getPointOfInterest(PointOfInterestDataModel p)
         {
-            string sql = @"SELECT * FROM geres4udb.PointOfInterest WHERE ID = @ID";
+            string sql = @"SELECT * FROM geres4udb.pointofinterest WHERE ID = " + p.ID;
             return _db.LoadData<PointOfInterestDataModel, dynamic>(sql, p);
         }
 
         public Task InsertPointOfInterestWithoutDescriptionAndImage(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                           VALUES (@ID, @Name, NULL, @Lat, @Long, false, NULL)
-                           END";
+            string sql = @"INSERT INTO geres4udb.pointofinterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+                           VALUES (" + pointOfInterest.ID +", @Name, NULL, " + pointOfInterest.Lat +", " + pointOfInterest.Long + ", 0, NULL) END";
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task InsertPointOfInterestWithDescriptionWithoutImage(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                            VALUES (@ID, @Name, NULL, @Lat, @Long, false, @Description)
-                            END";
+            string sql = @"INSERT INTO geres4udb.pointofinterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+                           VALUES (" + pointOfInterest.ID + ", @Name, NULL, " + pointOfInterest.Lat + ", " + pointOfInterest.Long + ", 0, @Description) END";  
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task InsertPointOfInterestWithDescriptionAndImagePath(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                            VALUES (@ID, @Name, @Images, @Lat, @Long, false, @Description)
-                            END";
+            string sql = @"INSERT INTO geres4udb.pointofinterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+                            VALUES (" + pointOfInterest.ID + ", @Name, @Images, " + pointOfInterest.Lat + ", " + pointOfInterest.Long + ", 0, NULL) END";
             return _db.SaveData(sql, pointOfInterest);
         }
 
         // Nunca poderá adicionar sugestões c imagens visto que a imagem é o local path
         public Task InsertPointOfInterestSugestionWithoutDescription(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                            VALUES (@ID, @Name, NULL, @Lat, @Long, true, NULL)
-                            END";
+            string sql = @"INSERT INTO geres4udb.pointofinterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+                           VALUES (" + pointOfInterest.ID + ", @Name, NULL, " + pointOfInterest.Lat + ", " + pointOfInterest.Long + ", 1, NULL) END";
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task InsertPointOfInterestSugestion(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                            VALUES (@Name, NULL, @Lat, @Long, true, @Description)
-                            END";
+            string sql = @"INSERT INTO geres4udb.pointofinterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+                            VALUES (" + pointOfInterest.ID + ", @Name, NULL, " + pointOfInterest.Lat + ", " + pointOfInterest.Long + ", 0, @Description) END";
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task UpdatePointOfInterest(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"UPDATE geres4udb.PointOfInterest SET Name = @Name, Images = @Images, Lat = @Lat, Long = @Long, isSugestion = @isSugestion, Description = @Description
-                           WHERE ID = @ID";
+            string sql = @"UPDATE geres4udb.pointofinterest 
+                           SET Name = @Name, Images = @Images, Lat = " + pointOfInterest.Lat + ",  Long = " + pointOfInterest.Long + ",  isSugestion = " +pointOfInterest.isSugestion + @", Description = @Description
+                           WHERE ID = " + pointOfInterest.ID;
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task RemovePointOfInterest(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"DELETE FROM geres4udb.PointOfInterest
-                           WHERE ID = @ID";
+            string sql = @"DELETE FROM geres4udb.pointofinterest
+                           WHERE ID = " + pointOfInterest.ID;
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task acceptPointOfInterestSugestion(PointOfInterestDataModel pointOfInterest)
         { 
             PointOfInterestDataModel p = new PointOfInterestDataModel(pointOfInterest.ID, pointOfInterest.Name,
-                    pointOfInterest.Images, pointOfInterest.Lat, pointOfInterest.Long, false,
+                    pointOfInterest.Images, pointOfInterest.Lat, pointOfInterest.Long, 0,
                     pointOfInterest.Description);
             return UpdatePointOfInterest(p);
         }
