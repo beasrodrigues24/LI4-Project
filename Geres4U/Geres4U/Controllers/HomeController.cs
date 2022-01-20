@@ -1,6 +1,7 @@
 ﻿using Geres4U.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -115,7 +116,7 @@ namespace Geres4U.Controllers
         {
             if(ModelState.IsValid)
                 if (SignInUser(a).Result == 1)
-                    return RedirectToAction("Index", "Client");
+                    return RedirectToAction("Index");
                 // TODO: Mensagens de Erro para -1 -> Password incorreta ou 0 -> utilizador inexistente
                 return View();
         }
