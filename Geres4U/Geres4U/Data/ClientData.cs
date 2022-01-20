@@ -22,7 +22,8 @@ namespace Geres4U.Data
 
         public Task InsertClient(ClientDataModel client)
         {
-            string sql = @"INSERT INTO dbo.Client (Email, Password)
+            string sql = @"IF NOT EXISTS (SELECT * FROM dbo.Client WHERE Email = @Email)
+                           INSERT INTO dbo.Client (Email, Password)
                            VALUES (@Email, @Password)";
             return _db.SaveData(sql, client);
         }
