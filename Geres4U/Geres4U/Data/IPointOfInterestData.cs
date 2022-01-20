@@ -15,5 +15,7 @@ namespace Geres4U.Data
         Task InsertPointOfInterestSugestion(PointOfInterestDataModel pointOfInterest);
         Task acceptPointOfInterestSugestion(PointOfInterestDataModel pointOfInterest);
         Task RemovePointOfInterest(PointOfInterestDataModel pointOfInterest);
+        Task addImageToPointOfInterest(PointOfInterestDataModel p, string imagePath);
+        Task addDescriptionToPointOfInterest(PointOfInterestDataModel p, string description);
     }
 }

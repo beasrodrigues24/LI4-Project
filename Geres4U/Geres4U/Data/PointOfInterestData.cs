@@ -31,25 +31,21 @@ namespace Geres4U.Data
 
         public Task<List<PointOfInterestDataModel>> getPointOfInterest(PointOfInterestDataModel p)
         {
-            string sql = @"SELECT * FROM geres4udb.PointOfInterest WHERE ID = @id";
+            string sql = @"SELECT * FROM geres4udb.PointOfInterest WHERE ID = @ID";
             return _db.LoadData<PointOfInterestDataModel, dynamic>(sql, p);
         }
 
         public Task InsertPointOfInterestWithoutDescriptionAndImage(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"IF NOT EXISTS (SELECT * FROM geres4udb.PointOfInterest WHERE ID = @ID)
-                            BEGIN
-                            INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                            VALUES (@ID, @Name, NULL, @Lat, @Long, false, NULL)
-                            END";
+            string sql = @"INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+                           VALUES (@ID, @Name, NULL, @Lat, @Long, false, NULL)
+                           END";
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task InsertPointOfInterestWithDescriptionWithoutImage(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"IF NOT EXISTS (SELECT * FROM dbo.PointOfInterest WHERE ID = @ID)
-                            BEGIN
-                            INSERT INTO dbo.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+            string sql = @"INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
                             VALUES (@ID, @Name, NULL, @Lat, @Long, false, @Description)
                             END";
             return _db.SaveData(sql, pointOfInterest);
@@ -57,9 +53,7 @@ namespace Geres4U.Data
 
         public Task InsertPointOfInterestWithDescriptionAndImagePath(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"IF NOT EXISTS (SELECT * FROM dbo.PointOfInterest WHERE ID = @ID)
-                            BEGIN
-                            INSERT INTO dbo.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+            string sql = @"INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
                             VALUES (@ID, @Name, @Images, @Lat, @Long, false, @Description)
                             END";
             return _db.SaveData(sql, pointOfInterest);
@@ -68,9 +62,7 @@ namespace Geres4U.Data
         // Nunca poderá adicionar sugestões c imagens visto que a imagem é o local path
         public Task InsertPointOfInterestSugestionWithoutDescription(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"IF NOT EXISTS (SELECT * FROM dbo.PointOfInterest WHERE ID = @ID)
-                            BEGIN
-                            INSERT INTO dbo.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+            string sql = @"INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
                             VALUES (@ID, @Name, NULL, @Lat, @Long, true, NULL)
                             END";
             return _db.SaveData(sql, pointOfInterest);
@@ -78,25 +70,22 @@ namespace Geres4U.Data
 
         public Task InsertPointOfInterestSugestion(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"IF NOT EXISTS (SELECT * FROM dbo.PointOfInterest WHERE ID = @ID)
-                            BEGIN
-                            INSERT INTO dbo.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                            VALUES (@ID, @Name, NULL, @Lat, @Long, true, @Description)
+            string sql = @"INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+                            VALUES (@Name, NULL, @Lat, @Long, true, @Description)
                             END";
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task UpdatePointOfInterest(PointOfInterestDataModel pointOfInterest)
         {
-            string sql =
-                @"UPDATE dbo.PointOfInterest SET Name = @Name, Images = @Images, Lat = @Lat, Long = @Long, isSugestion = @isSugestion, Description = @Description
+            string sql = @"UPDATE geres4udb.PointOfInterest SET Name = @Name, Images = @Images, Lat = @Lat, Long = @Long, isSugestion = @isSugestion, Description = @Description
                            WHERE ID = @ID";
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task RemovePointOfInterest(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"DELETE FROM dbo.PointOfInterest
+            string sql = @"DELETE FROM geres4udb.PointOfInterest
                            WHERE ID = @ID";
             return _db.SaveData(sql, pointOfInterest);
         }
@@ -106,6 +95,18 @@ namespace Geres4U.Data
             PointOfInterestDataModel p = new PointOfInterestDataModel(pointOfInterest.ID, pointOfInterest.Name,
                     pointOfInterest.Images, pointOfInterest.Lat, pointOfInterest.Long, false,
                     pointOfInterest.Description);
+            return UpdatePointOfInterest(p);
+        }
+
+        public Task addImageToPointOfInterest(PointOfInterestDataModel p, string imagePath)
+        {
+            p.Images = imagePath;
+            return UpdatePointOfInterest(p);
+        }
+
+        public Task addDescriptionToPointOfInterest(PointOfInterestDataModel p, string description)
+        {
+            p.Description = description;
             return UpdatePointOfInterest(p);
         }
     }
