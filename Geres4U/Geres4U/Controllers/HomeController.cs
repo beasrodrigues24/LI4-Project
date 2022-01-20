@@ -110,7 +110,6 @@ namespace Geres4U.Controllers
             return 0;
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SignIn(Authentication a)

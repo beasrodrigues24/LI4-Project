@@ -11,10 +11,6 @@ namespace Geres4U.Models
         [DataType(DataType.EmailAddress)] // valida se o endereço de email é válido
         public String Email { get; set; }
 
-        [Display(Name = "Confirm Email")]
-        [Compare("Email", ErrorMessage = "The provided emails don't match.")]
-        public String ConfirmEmail { get; set; }
-
         [Display(Name = "Password")]
         [Required(ErrorMessage = "You must provide a password")]
         [DataType(DataType.Password)]
