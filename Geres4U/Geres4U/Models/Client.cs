@@ -12,7 +12,7 @@ namespace Geres4U.Models
         public String Email { get; set; }
 
         [Display(Name = "Confirm Email")]
-        [Compare("EmailAddress", ErrorMessage = "The provided Emails doesn't match.")]
+        [Compare("Email", ErrorMessage = "The provided emails don't match.")]
         public String ConfirmEmail { get; set; }
 
         [Display(Name = "Password")]
