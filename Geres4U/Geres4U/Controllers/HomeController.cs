@@ -15,6 +15,7 @@ namespace Geres4U.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IDataAccess _db = new DataAccess();
+        public string currentlyLogedUser { get; set; }
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -65,5 +66,60 @@ namespace Geres4U.Controllers
             return View();
         }
 
+        public ActionResult SignIn()
+        {
+            ViewBag.Message = "SignIn";
+            return View();
+        }
+
+        public async Task<int> SignInUser(Authentication u)
+        {
+            ClientData cd = new ClientData(_db);
+            ReviserData rd = new ReviserData(_db);
+            List<ClientDataModel> client = await cd.getClient(new ClientDataModel(u.Email, u.Password));
+            if (client.Count != 0)
+            {
+                foreach (ClientDataModel c in client)
+                {
+                    if (c.Password.Equals(u.Password))
+                    {
+                        currentlyLogedUser = u.Email;
+                        return 1;
+                    }
+                    return -1;
+                }
+            }
+            else
+            {
+                List<ReviserDataModel> reviser = await rd.getReviser(new ReviserDataModel(u.Email, u.Password));
+                if (reviser.Count != 0)
+                {
+                    foreach (ReviserDataModel r in reviser)
+                    {
+                        if (r.Password.Equals(u.Password))
+                        {
+                            currentlyLogedUser = u.Email;
+                            return 1;
+                        }
+
+                        return -1;
+                    }
+                }
+            }
+
+            return 0;
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignIn(Authentication a)
+        {
+            if(ModelState.IsValid)
+                if (SignInUser(a).Result == 1)
+                    return RedirectToAction("Index");
+                // TODO: Mensagens de Erro para -1 -> Password incorreta ou 0 -> utilizador inexistente
+                return View();
+        }
     }
 }
