@@ -12,7 +12,7 @@ namespace Geres4U.Data
     {
         //private readonly IConfiguration _config;
 
-        public string ConnectionString { get; set; } = "server=localhost;user=geres4u;database=mydb;password=Geres4U1234;port=3306";
+        public string ConnectionString { get; set; } = "server=localhost;user=geres4u;database=geres4udb;password=Geres4U1234;port=3306";
 
         public DataAccess() { }
 

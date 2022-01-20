@@ -15,7 +15,7 @@ namespace Geres4U.Data
 
         public Task<List<PointOfInterestCategoryDataModel>> getCategoryDataFromPointOfInterest(PointOfInterestCategoryDataModel p)
         {
-            string sql = @"SELECT (CategoryID, PointOfInterestID) FROM dbo.PointOfInterestCategory
+            string sql = @"SELECT (CategoryID, PointOfInterestID) FROM geres4udb.PointOfInterestCategory
                            WHERE PointOfInterestID = @PointOfInterestID
                            ORDER BY CategoryID DESC";
             return _db.LoadData<PointOfInterestCategoryDataModel, dynamic>(sql, new { });
@@ -43,7 +43,7 @@ namespace Geres4U.Data
 
         public Task InsertCategory(PointOfInterestCategoryDataModel pointOfInterestCategory)
         {
-            string sql = @"INSERT INTO dbo.PointOfInterestCategory (CategoryID, PointOfInterestID)
+            string sql = @"INSERT INTO geres4udb.PointOfInterestCategory (CategoryID, PointOfInterestID)
                            VALUES (@CategoryID, @PointOfInterestID)";
             return _db.SaveData(sql, pointOfInterestCategory);
         }

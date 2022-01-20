@@ -65,32 +65,5 @@ namespace Geres4U.Controllers
             return View();
         }
 
-        public ActionResult SignUpRev()
-        {
-            ViewBag.Message = "Reviser SignUp";
-            return View();
-        }
-
-        public async Task<bool> SignUpRevToDB(Reviser r)
-        {
-            ReviserData rd = new ReviserData(_db);
-            List<ReviserDataModel> newclient = await rd.getReviser(new ReviserDataModel(r.Email, r.Password));
-            if (newclient.Count == 0)
-            {
-                await rd.InsertReviser(new ReviserDataModel(r.Email, r.Password));
-                return true;
-            }
-            return false;
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SignUpRev(Reviser r)
-        {
-            if (ModelState.IsValid)
-                if(SignUpRevToDB(r).Result) 
-                    return RedirectToAction("Index"); // se funcionar vai dar redirect para "Index" TODO: alterar para o sítio correto de redirect
-            return View();
-        }
     }
 }

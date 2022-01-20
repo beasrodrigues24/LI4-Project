@@ -16,14 +16,13 @@ namespace Geres4U.Data
 
         public Task<List<ClientDataModel>> getClient(ClientDataModel client)
         {
-            string sql = "SELECT * FROM dbo.Client WHERE Email = @Email";
+            string sql = "SELECT * FROM geres4udb.client WHERE Email = @Email";
             return _db.LoadData<ClientDataModel, dynamic>(sql, client);
         }
 
         public Task InsertClient(ClientDataModel client)
         {
-            string sql = @"IF NOT EXISTS (SELECT * FROM dbo.Client WHERE Email = @Email)
-                           INSERT INTO dbo.Client (Email, Password)
+            string sql = @"INSERT INTO geres4udb.client (Email, Password)
                            VALUES (@Email, @Password)";
             return _db.SaveData(sql, client);
         }

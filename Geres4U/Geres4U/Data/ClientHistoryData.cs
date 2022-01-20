@@ -15,7 +15,7 @@ namespace Geres4U.Data
 
         public Task<List<ClientHistoryDataModel>> getHistoryDataModelFromClient(ClientHistoryDataModel c)
         {
-            string sql = @"SELECT (ClientID, PointOfInterestID) FROM dbo.ClientHistory
+            string sql = @"SELECT (ClientID, PointOfInterestID) FROM geres4udb.ClientHistory
                            WHERE ClientID = @ClientID
                            ORDER BY PointOfInterestID DESC";
             return _db.LoadData<ClientHistoryDataModel, dynamic>(sql, new { });
@@ -23,14 +23,14 @@ namespace Geres4U.Data
 
         public Task InsertHistory(ClientHistoryDataModel clientHistory)
         {
-            string sql = @"INSERT INTO dbo.ClientHistory (ClientID, PointOfInterestID)
+            string sql = @"INSERT INTO geres4udb.ClientHistory (ClientID, PointOfInterestID)
                            VALUES (@ClientID, @PointOfInterestID)";
             return _db.SaveData(sql, clientHistory);
         }
 
         public Task RemoveHistory(ClientHistoryDataModel client)
         {
-            string sql = @"DELETE FROM dbo.ClientHistory 
+            string sql = @"DELETE FROM geres4udb.ClientHistory 
                            WHERE ClientID = @ClientID AND PointOfInterestID = @PointOfInterestID";
             return _db.SaveData(sql, client);
         }

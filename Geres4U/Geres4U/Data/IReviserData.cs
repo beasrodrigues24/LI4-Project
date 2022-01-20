@@ -7,6 +7,5 @@ namespace Geres4U.Data
     public interface IReviserData
     {
         Task<List<ReviserDataModel>> getReviser(ReviserDataModel reviser);
-        Task InsertReviser(ReviserDataModel reviser);
     }
 }

@@ -21,6 +21,7 @@ namespace Geres4U.Models
         [StringLength(32, MinimumLength = 5, ErrorMessage = "You need to provide a password with at least 5 characters and maximum of 32 characters.")]
         public String Password { get; set; }
 
+        [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         [Compare(("Password"), ErrorMessage = "The provided password doesn't match.")]
         public String ConfirmPassword { get; set; }

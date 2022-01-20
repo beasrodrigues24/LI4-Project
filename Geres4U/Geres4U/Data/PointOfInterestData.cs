@@ -15,7 +15,7 @@ namespace Geres4U.Data
 
         public Task<List<PointOfInterestDataModel>> GetPointsOfInterest()
         {
-            string sql = @"SELECT (ID, Name, Images, Lat, Long, isSugestion, Description) FROM dbo.PointOfInterest 
+            string sql = @"SELECT (ID, Name, Images, Lat, Long, isSugestion, Description) FROM geres4udb.PointOfInterest 
                          WHERE isSugestion = false
                          ORDER BY ID DESC";
             return _db.LoadData<PointOfInterestDataModel, dynamic>(sql, new { });
@@ -23,7 +23,7 @@ namespace Geres4U.Data
 
         public Task<List<PointOfInterestDataModel>> getSugestionsPointsOfInterest()
         {
-            string sql = @"SELECT (ID, Name, Images, Lat, Long, isSugestion, Description) FROM dbo.PointOfInterest 
+            string sql = @"SELECT (ID, Name, Images, Lat, Long, isSugestion, Description) FROM geres4udb.PointOfInterest 
                          WHERE isSugestion = true
                          ORDER BY ID DESC";
             return _db.LoadData<PointOfInterestDataModel, dynamic>(sql, new { });
@@ -31,15 +31,15 @@ namespace Geres4U.Data
 
         public Task<List<PointOfInterestDataModel>> getPointOfInterest(PointOfInterestDataModel p)
         {
-            string sql = @"SELECT * FROM dbo.PointOfInterest WHERE ID = @id";
+            string sql = @"SELECT * FROM geres4udb.PointOfInterest WHERE ID = @id";
             return _db.LoadData<PointOfInterestDataModel, dynamic>(sql, p);
         }
 
         public Task InsertPointOfInterestWithoutDescriptionAndImage(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"IF NOT EXISTS (SELECT * FROM dbo.PointOfInterest WHERE ID = @ID)
+            string sql = @"IF NOT EXISTS (SELECT * FROM geres4udb.PointOfInterest WHERE ID = @ID)
                             BEGIN
-                            INSERT INTO dbo.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
+                            INSERT INTO geres4udb.PointOfInterest(ID, Name, Images, Lat, Long, isSugestion, Description)
                             VALUES (@ID, @Name, NULL, @Lat, @Long, false, NULL)
                             END";
             return _db.SaveData(sql, pointOfInterest);
