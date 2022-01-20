@@ -14,7 +14,7 @@ namespace Geres4U.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IDataAccess _db = new DataAccess();
-        public string currentlyLogedUser { get; set; }
+        public string currentlyLoggedUser { get; set; }
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -82,7 +82,7 @@ namespace Geres4U.Controllers
                 {
                     if (c.Password.Equals(u.Password))
                     {
-                        currentlyLogedUser = u.Email;
+                        currentlyLoggedUser = u.Email;
                         return 1;
                     }
                     return -1;
@@ -97,7 +97,7 @@ namespace Geres4U.Controllers
                     {
                         if (r.Password.Equals(u.Password))
                         {
-                            currentlyLogedUser = u.Email;
+                            currentlyLoggedUser = u.Email;
                             return 1;
                         }
 
