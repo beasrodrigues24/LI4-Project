@@ -11,5 +11,11 @@ namespace Geres4U.Models
         [Required]
         [MaxLength(45)]
         public string Name { get; set; }
+
+        public Category(int id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace Geres4U.Data
             return _db.LoadData<PointOfInterestCategoryDataModel, dynamic>(sql, new { });
         }
 
-        public List<CategoryDataModel> getCategoriesFromPointOfInterest(string pID)
+        public List<CategoryDataModel> getCategoriesFromPointOfInterest(int pID)
         {
             CategoryData cID = new CategoryData(_db);
             PointOfInterestCategoryDataModel p = new PointOfInterestCategoryDataModel(pID);

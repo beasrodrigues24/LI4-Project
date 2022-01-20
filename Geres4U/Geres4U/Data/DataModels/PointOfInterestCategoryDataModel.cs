@@ -4,9 +4,9 @@
     {
         public int CategoryID { get; set; }
 
-        public string PointOfInterestID { get; set; }
+        public int PointOfInterestID { get; set; }
 
-        public PointOfInterestCategoryDataModel(string pointOfInterestId)
+        public PointOfInterestCategoryDataModel(int pointOfInterestId)
         {
             CategoryID = -1;
             PointOfInterestID = pointOfInterestId;
