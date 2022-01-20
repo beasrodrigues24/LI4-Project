@@ -202,7 +202,7 @@ namespace Geres4U.Controllers
             return View(points);
         }
 
-        public IActionResult SugestPointOfInterest()
+        public IActionResult SuggestPointOfInterest()
         {
             return View();
         }
