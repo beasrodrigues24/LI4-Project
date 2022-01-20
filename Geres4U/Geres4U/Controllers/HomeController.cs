@@ -7,12 +7,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Geres4U.Data;
+using Geres4U.Data.DataModels;
 
 namespace Geres4U.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IDataAccess _db = new DataAccess();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -40,14 +42,25 @@ namespace Geres4U.Controllers
             return View();
         }
 
+        public async Task<bool> SignUpClientToDB(Client c)
+        {
+            ClientData cd = new ClientData(_db);
+            List<ClientDataModel> newclient = await cd.getClient(new ClientDataModel(c.Email, c.Password));
+            if (newclient.Count == 0)
+            {
+                await cd.InsertClient(new ClientDataModel(c.Email, c.Password));
+                return true;
+            }
+            return false;
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SignUpClient(Client c)
         {
             if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index"); // se funcionar vai dar redirect para "Index" TODO: alterar para o sítio correto de redirect
-            }
+                if(SignUpClientToDB(c).Result)
+                    return RedirectToAction("Index"); // se funcionar vai dar redirect para "Index" TODO: alterar para o sítio correto de redirect
 
             return View();
         }
@@ -58,15 +71,25 @@ namespace Geres4U.Controllers
             return View();
         }
 
+        public async Task<bool> SignUpRevToDB(Reviser r)
+        {
+            ReviserData rd = new ReviserData(_db);
+            List<ReviserDataModel> newclient = await rd.getReviser(new ReviserDataModel(r.Email, r.Password));
+            if (newclient.Count == 0)
+            {
+                await rd.InsertReviser(new ReviserDataModel(r.Email, r.Password));
+                return true;
+            }
+            return false;
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SignUpRev(Reviser r)
         {
             if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index"); // se funcionar vai dar redirect para "Index" TODO: alterar para o sítio correto de redirect
-            }
-
+                if(SignUpRevToDB(r).Result) 
+                    return RedirectToAction("Index"); // se funcionar vai dar redirect para "Index" TODO: alterar para o sítio correto de redirect
             return View();
         }
     }

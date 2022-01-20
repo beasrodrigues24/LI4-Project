@@ -10,19 +10,15 @@ namespace Geres4U.Data
 {
     public class DataAccess : IDataAccess
     {
-        private readonly IConfiguration _config;
+        //private readonly IConfiguration _config;
 
-        public string ConnectionString { get; set; } = "Default";
+        public string ConnectionString { get; set; } = "server=localhost;user=geres4u;database=mydb;password=Geres4U1234;port=3306";
 
-        public DataAccess(IConfiguration config)
-        {
-            _config = config;
-        }
+        public DataAccess() { }
 
         public async Task<List<T>> LoadData<T, U>(string sql, U parameters)
         {
-            string connectionString = _config.GetConnectionString(ConnectionString);
-            using (IDbConnection connection = new MySqlConnection(connectionString))
+            using (IDbConnection connection = new MySqlConnection(ConnectionString))
             {
                 var data = await connection.QueryAsync<T>(sql, parameters);
 
@@ -32,8 +28,7 @@ namespace Geres4U.Data
 
         public async Task SaveData<T>(string sql, T parameters)
         {
-            string connectionString = _config.GetConnectionString(ConnectionString);
-            using (IDbConnection connection = new MySqlConnection(connectionString))
+            using (IDbConnection connection = new MySqlConnection(ConnectionString))
             {
                 await connection.ExecuteAsync(sql, parameters);
             }
