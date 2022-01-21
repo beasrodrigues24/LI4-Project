@@ -100,7 +100,7 @@ namespace Geres4U.Controllers
                         if (r.Password.Equals(u.Password))
                         {
                             currentlyLoggedUser = u.Email;
-                            return 1;
+                            return 2;
                         }
 
                         return -1;
@@ -115,14 +115,20 @@ namespace Geres4U.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SignIn(Authentication a)
         {
-            if(ModelState.IsValid)
-                if (SignInUser(a).Result == 1)
+            if (ModelState.IsValid)
+            {
+                int res = SignInUser(a).Result;
+                if (res == 1)
                 {
                     TempData["email"] = currentlyLoggedUser;
                     return RedirectToAction("Index", "Client");
-                    // TODO: Mensagens de Erro para -1 -> Password incorreta ou 0 -> utilizador inexistente
                 }
-
+                else if (res == 2)
+                {
+                    return RedirectToAction("Index", "Reviser");
+                }
+                // TODO: Mensagens de Erro para -1 -> Password incorreta ou 0 -> utilizador inexistente
+            }
             return View();
         }
     }

@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using Geres4U.Data;
+﻿using Geres4U.Data;
 using Geres4U.Data.DataModels;
 using Geres4U.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Geres4U.Controllers
 {
     public class ReviserController : Controller
     {
         private readonly IDataAccess _db = new DataAccess();
-        public string Email { get; set; }
         public IActionResult Index()
         {
             return View();
@@ -152,11 +151,54 @@ namespace Geres4U.Controllers
             return true;
         }
 
+        public IActionResult AddPointOfInterest()
+        {
+            ViewBag.Message = "AddPointOfInterest";
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult AddPointOfInterest(PointOfInterestByReviser p)
         {
-            PointOfInterestDataModel pidm = new PointOfInterestDataModel(-1, p.Name, null, p.Lat, p.Long, 0, p.Description);
+            PointOfInterestDataModel pidm = new PointOfInterestDataModel(-1, p.Name, p.ImagePath, p.Lat, p.Long, 0, p.Description);
             bool res = AddPointOfInterestToDB(pidm);
             return View(res);
+        }
+
+        public IActionResult UpdatePointOfInterest()
+        {
+            ViewBag.Message = "UpdatePointOfInterest";
+            return View();
+        }
+
+        public async Task<bool> UpdatePointOfInterestOnDB(PointOfInterestDataModel p)
+        {
+            PointOfInterestData pd = new PointOfInterestData(_db);
+            List<PointOfInterestDataModel> pdm = pd.getPointOfInterest(p).Result;
+            if (pdm != null && pdm.Count > 0)
+            {
+                await pd.RemovePointOfInterest(p);
+                AddPointOfInterestToDB(p);
+                return true;
+            }
+            else return false;
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdatePointOfInterest(PointOfInterestToUpdate p)
+        {
+            PointOfInterestDataModel pdm =
+                new PointOfInterestDataModel(p.Id, p.Name, p.ImagePath, p.Lat, p.Long, 0, p.Description);
+            bool res = UpdatePointOfInterestOnDB(pdm).Result;
+            return View(res);
+        }
+
+        public IActionResult LoggingOut()
+        {
+            TempData.Remove("email");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
