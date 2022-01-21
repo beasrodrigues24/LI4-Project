@@ -11,11 +11,9 @@ namespace Geres4U.Controllers
     public class ClientController : Controller
     {
         private readonly IDataAccess _db = new DataAccess();
-        public string Email { get; set; }
         public IActionResult Index(string email)
         {
-            Email = email;
-            return View();
+            return View("Index", (string)TempData.Peek("email"));
         }
 
         public List<PointOfInterest> GetPointsOfInterestOfDB()
@@ -91,7 +89,7 @@ namespace Geres4U.Controllers
             if (points.Count > 0)
             {
                 ClientHistoryData chD = new ClientHistoryData(_db);
-                await chD.InsertHistory(new ClientHistoryDataModel(Email, id));
+                await chD.InsertHistory(new ClientHistoryDataModel((string)TempData.Peek("email"), id));
                 return true;
             }
 
@@ -114,7 +112,7 @@ namespace Geres4U.Controllers
         {
             bool exists = false;
             ClientHistoryData chD = new ClientHistoryData(_db);
-            List<PointOfInterestDataModel> points = chD.getHistoryFromClient(Email);
+            List<PointOfInterestDataModel> points = chD.getHistoryFromClient((string)TempData.Peek("email"));
             foreach (PointOfInterestDataModel point in points)
                 if (point.ID == id)
                 {
@@ -124,7 +122,7 @@ namespace Geres4U.Controllers
 
             if (exists)
             {
-                await chD.RemoveHistory(new ClientHistoryDataModel(Email, id));
+                await chD.RemoveHistory(new ClientHistoryDataModel((string)TempData.Peek("email"), id));
                 return true;
             }
 
@@ -147,7 +145,7 @@ namespace Geres4U.Controllers
         {
             ClientHistoryData chD = new ClientHistoryData(_db);
             List<PointOfInterest> ans = new List<PointOfInterest>();
-            List<PointOfInterestDataModel> points = chD.getHistoryFromClient(Email);
+            List<PointOfInterestDataModel> points = chD.getHistoryFromClient((string)TempData.Peek("email"));
             if (points.Count > 0)
             {
                 PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
@@ -234,6 +232,12 @@ namespace Geres4U.Controllers
                 return RedirectToAction("Index"); // TODO
             }
             return View();
+        }
+
+        public IActionResult LoggingOut()
+        {
+            TempData.Remove("email");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

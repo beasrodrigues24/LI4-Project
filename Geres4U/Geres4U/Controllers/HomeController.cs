@@ -118,8 +118,8 @@ namespace Geres4U.Controllers
             if(ModelState.IsValid)
                 if (SignInUser(a).Result == 1)
                 {
-                    TempData["user"] = currentlyLoggedUser;
-                    return RedirectToAction("Index", "Client", new{email = currentlyLoggedUser});
+                    TempData["email"] = currentlyLoggedUser;
+                    return RedirectToAction("Index", "Client");
                     // TODO: Mensagens de Erro para -1 -> Password incorreta ou 0 -> utilizador inexistente
                 }
 

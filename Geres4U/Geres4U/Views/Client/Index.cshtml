@@ -1,10 +1,16 @@
-﻿
+﻿@model string
+
 @{
     ViewData["Title"] = "Index";
     Layout = "_LayoutLoggedIn";
 }
 
 <h1>Index</h1>
+
+@if (Model != null)
+{
+    <p>Value: @Model</p>
+}
 
 <div class="text-center">
    <p>Texto bonito i guess</p>
