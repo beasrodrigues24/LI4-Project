@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -118,7 +119,7 @@ namespace Geres4U.Controllers
                 if (SignInUser(a).Result == 1)
                 {
                     TempData["user"] = currentlyLoggedUser;
-                    return RedirectToAction("Index", "Client");
+                    return RedirectToAction("Index", "Client", new{email = currentlyLoggedUser});
                     // TODO: Mensagens de Erro para -1 -> Password incorreta ou 0 -> utilizador inexistente
                 }
 

@@ -12,9 +12,9 @@ namespace Geres4U.Controllers
     {
         private readonly IDataAccess _db = new DataAccess();
         public string Email { get; set; }
-        public IActionResult Index()
+        public IActionResult Index(string email)
         {
-            Email = (string) TempData["user"];
+            Email = email;
             return View();
         }
 
@@ -56,12 +56,6 @@ namespace Geres4U.Controllers
             return View(ans);
         }
 
-        public IActionResult GetSpecificPointOfInterest()
-        {
-            ViewBag.Message = "Point of Interest";
-            return View();
-        }
-
         public PointOfInterest GetSpecificPointOfInterestDB(int id)
         {
             PointOfInterestData pd = new PointOfInterestData(_db);
@@ -84,23 +78,10 @@ namespace Geres4U.Controllers
             return null;
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult GetSpecificPointOfInterest(SpecificPointOfInterestQuery p)
+        public IActionResult GetSpecificPointOfInterest(int id)
         {
-            if (ModelState.IsValid)
-            {
-                PointOfInterest pi = GetSpecificPointOfInterestDB(p.ID);
-                return View(pi);
-            }
-
-            return View();
-        }
-
-        public IActionResult AddPointVisited()
-        {
-            ViewBag.Message = "Add Point of Interest to History";
-            return View();
+            PointOfInterest pi = GetSpecificPointOfInterestDB(id);
+            return View(pi);
         }
 
         public async Task<bool> AddPointVisitedToDB(int id)
@@ -117,17 +98,10 @@ namespace Geres4U.Controllers
             return false;
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult AddPointVisited(SpecificPointOfInterestQuery p)
+        public IActionResult AddPointVisited(int id)
         {
-            if (ModelState.IsValid)
-            {
-                bool resultOfOp = AddPointVisitedToDB(p.ID).Result;
-                return View(resultOfOp);
-            }
-
-            return View();
+            bool resultOfOp = AddPointVisitedToDB(id).Result;
+            return View(resultOfOp);
         }
 
         public IActionResult RemovePointVisited()

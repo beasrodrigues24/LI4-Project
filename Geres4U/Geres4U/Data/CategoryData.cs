@@ -15,13 +15,13 @@ namespace Geres4U.Data
 
         public Task<List<CategoryDataModel>> getCategories()
         {
-            string sql = "SELECT * FROM geres4udb.Category ORDER BY ID DESC";
+            string sql = "SELECT * FROM geres4udb.category";
             return _db.LoadData<CategoryDataModel, dynamic>(sql, new { });
         }
 
         public Task<List<CategoryDataModel>> getCategory(CategoryDataModel c)
         {
-            string sql = @"SELECT * FROM geres4udb.Category WHERE ID =" + c.ID;
+            string sql = @"SELECT * FROM geres4udb.category WHERE ID = " + c.ID;
             return _db.LoadData<CategoryDataModel, dynamic>(sql, c);
         }
     }

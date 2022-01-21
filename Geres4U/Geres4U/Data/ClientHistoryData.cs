@@ -15,22 +15,25 @@ namespace Geres4U.Data
 
         public Task<List<ClientHistoryDataModel>> getHistoryDataModelFromClient(ClientHistoryDataModel c)
         {
-            string sql = @"SELECT (ClientID, PointOfInterestID) FROM geres4udb.ClientHistory
-                           WHERE ClientID = @ClientID";
+            string quote = "\"";
+            string sql = @"SELECT * FROM geres4udb.clienthistory
+                           WHERE ClientID = " + quote + c.ClientID + quote;
             return _db.LoadData<ClientHistoryDataModel, dynamic>(sql, new { });
         }
 
         public Task InsertHistory(ClientHistoryDataModel clientHistory)
         {
-            string sql = @"INSERT INTO geres4udb.ClientHistory (ClientID, PointOfInterestID)
-                           VALUES ( @ClientID, "  + clientHistory.PointOfInterestID +")";
+            string quote = "\"";
+            string sql = @"INSERT INTO geres4udb.clienthistory (ClientID, PointOfInterestID)
+                           VALUES (" + quote + clientHistory.ClientID + quote + ", "  + clientHistory.PointOfInterestID +")";
             return _db.SaveData(sql, clientHistory);
         }
 
         public Task RemoveHistory(ClientHistoryDataModel client)
         {
-            string sql = @"DELETE FROM geres4udb.ClientHistory 
-                           WHERE ClientID = @ClientID AND PointOfInterestID = " + client.PointOfInterestID;
+            string quote = "\"";
+            string sql = @"DELETE FROM geres4udb.clienthistory 
+                           WHERE ClientID = " + quote + client.ClientID  + quote + " AND PointOfInterestID = " + client.PointOfInterestID;
             return _db.SaveData(sql, client);
         }
 
