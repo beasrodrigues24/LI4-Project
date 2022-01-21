@@ -99,13 +99,10 @@ namespace Geres4U.Controllers
         public IActionResult AddPointVisited(int id)
         {
             bool resultOfOp = AddPointVisitedToDB(id).Result;
-            return View(resultOfOp);
-        }
 
-        public IActionResult RemovePointVisited()
-        {
-            ViewBag.Message = "Remove Point of Interest of History";
-            return View();
+            string resultMessage = (resultOfOp ? "Adicionado com sucesso" : "Erro");
+            ViewBag.result = resultMessage;
+            return View("GetPointsOfInterest", GetPointsOfInterestOfDB());
         }
 
         public async Task<bool> removePointVisitedDB(int id)
@@ -129,16 +126,11 @@ namespace Geres4U.Controllers
             return false;
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult RemovePointVisited(SpecificPointOfInterestQuery p)
+        public IActionResult RemovePointVisited(int id)
         {
-            if (ModelState.IsValid)
-            {
-                bool resultOfOp = removePointVisitedDB(p.ID).Result;
-                return View(resultOfOp);
-            }
-            return View();
+            bool resultOfOp = removePointVisitedDB(id).Result;
+            ViewBag.result = (resultOfOp ? "Removido com sucesso" : "Erro");
+            return View("GetPointsVisited", GetHistoryFromClient());
         }
 
         public List<PointOfInterest> GetHistoryFromClient()

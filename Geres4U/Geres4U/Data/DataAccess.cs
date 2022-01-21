@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System;
 
 namespace Geres4U.Data
 {
@@ -27,10 +28,15 @@ namespace Geres4U.Data
 
         public async Task SaveData<T>(string sql, T parameters)
         {
-            using (IDbConnection connection = new MySqlConnection(ConnectionString))
+            try
             {
-                await connection.ExecuteAsync(sql, parameters);
+                using (IDbConnection connection = new MySqlConnection(ConnectionString))
+                {
+                    await connection.ExecuteAsync(sql, parameters);
+                }
             }
+            catch (Exception ignored) { }
+
         }
     }
 }

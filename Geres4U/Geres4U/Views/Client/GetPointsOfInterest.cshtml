@@ -5,6 +5,11 @@
     Layout = "_LayoutLoggedIn";
 }
 
+@if (ViewBag.result != null)
+{
+    <p>@ViewBag.result</p>
+}
+
 <h1>GetPointsOfInterest</h1>
 
 @if (Model != null && Model.Count() != 0)

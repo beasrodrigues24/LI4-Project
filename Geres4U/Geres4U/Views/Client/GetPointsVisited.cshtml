@@ -8,6 +8,11 @@
 <h1>GetPointsVisited</h1>
 
 
+@if (ViewBag.result != null)
+{
+    <p>@ViewBag.result</p>
+}
+
 @if (Model != null && Model.Count() != 0)
 {
     <table class="table">
@@ -45,7 +50,10 @@
                         @Html.DisplayFor(modelItem => item.Long)
                     </td>
                     <td>
-                        @Html.ActionLink("Details", "GetSpecificPointOfInterest", "Client", new { item.Id }, null)
+                        @Html.ActionLink("Ler mais", "GetSpecificPointOfInterest", "Client", new { item.Id }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Remover do histórico", "RemovePointVisited", "Client", new { item.Id }, null)
                     </td>
                 </tr>
             }
