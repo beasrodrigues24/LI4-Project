@@ -33,22 +33,27 @@ namespace Geres4U.Data
 
         public Task InsertPointOfInterestWithoutDescriptionAndImage(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"INSERT INTO geres4udb.pointofinterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                           VALUES (" + pointOfInterest.ID +", @Name, NULL, " + pointOfInterest.Lat +", " + pointOfInterest.Long + ", 0, NULL) END";
+            string lat = pointOfInterest.Lat.ToString().Replace(',', '.');
+            string lon = pointOfInterest.Long.ToString().Replace(',', '.');
+            string sql = "INSERT INTO geres4udb.pointofinterest (`Name`, `Lat`, `Long`, `isSugestion`) VALUES (@Name, '" + lat + "', '" + lon + "', '0')";
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task InsertPointOfInterestWithDescriptionWithoutImage(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"INSERT INTO geres4udb.pointofinterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                           VALUES (" + pointOfInterest.ID + ", @Name, NULL, " + pointOfInterest.Lat + ", " + pointOfInterest.Long + ", 0, @Description) END";  
+            string lat = pointOfInterest.Lat.ToString().Replace(',', '.');
+            string lon = pointOfInterest.Long.ToString().Replace(',', '.');
+            string sql =
+                @"INSERT INTO `geres4udb`.`pointofinterest` (`Name`, `Lat`, `Long`, `isSugestion`, `Description`) VALUES (@Name, '" + lat + "', '" + lon + "', '0', @Description)"; ;  
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task InsertPointOfInterestWithDescriptionAndImagePath(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"INSERT INTO geres4udb.pointofinterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                            VALUES (" + pointOfInterest.ID + ", @Name, @Images, " + pointOfInterest.Lat + ", " + pointOfInterest.Long + ", 0, NULL) END";
+            string lat = pointOfInterest.Lat.ToString().Replace(',', '.');
+            string lon = pointOfInterest.Long.ToString().Replace(',', '.');
+            string sql =
+                @"INSERT INTO geres4udb.pointofinterest (`Name`, `Images`, `Lat`, `Long`, `isSugestion`, `Description`) VALUES (@Name, @Images, '" + lat + "', '" + lon + "' '0', @Description)";
             return _db.SaveData(sql, pointOfInterest);
         }
 
@@ -75,16 +80,16 @@ namespace Geres4U.Data
 
         public Task UpdatePointOfInterest(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"UPDATE geres4udb.pointofinterest 
-                           SET Name = @Name, Images = @Images, Lat = " + pointOfInterest.Lat + ",  Long = " + pointOfInterest.Long + ",  isSugestion = " +pointOfInterest.isSugestion + @", Description = @Description
-                           WHERE ID = " + pointOfInterest.ID;
+            string lat = pointOfInterest.Lat.ToString().Replace(',', '.');
+            string lon = pointOfInterest.Long.ToString().Replace(',', '.');
+            string sql = "UPDATE `geres4udb`.`pointofinterest` SET `Name` = @Name, `Images` = @Images, `Lat` = '" + lat + "', `Long` = '" + lon + "', `isSugestion` = '0', `Description` = @Description WHERE(`ID` = '" + pointOfInterest.ID + "')";
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task RemovePointOfInterest(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"DELETE FROM geres4udb.pointofinterest
-                           WHERE ID = " + pointOfInterest.ID;
+            string sql = "DELETE FROM geres4udb.pointofinterest WHERE(`ID` = '" + pointOfInterest.ID +"')";
+
             return _db.SaveData(sql, pointOfInterest);
         }
 

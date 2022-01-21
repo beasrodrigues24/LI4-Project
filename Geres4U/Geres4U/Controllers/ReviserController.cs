@@ -97,13 +97,14 @@ namespace Geres4U.Controllers
             List<PointOfInterestDataModel> pdm = pd.getPointOfInterest(new PointOfInterestDataModel(id)).Result;
             foreach (PointOfInterestDataModel pidm in pdm)
             {
+                pd.RemovePointOfInterest(new PointOfInterestDataModel(id));
                 PointOfInterestDataModel p = new PointOfInterestDataModel(pidm.ID, pidm.Name, pidm.Images, pidm.Lat,
-                    pidm.Long, pidm.isSugestion, pidm.Description);
+                    pidm.Long, 0, pidm.Description);
                 if (p.Description != null && p.Images != null)
                 {
                     pd.InsertPointOfInterestWithoutDescriptionAndImage(p);
                 }
-                else if (p.Description != null) pd.InsertPointOfInterestWithDescriptionWithoutImage(p);
+                else if (p.Description != null)pd.InsertPointOfInterestWithDescriptionWithoutImage(p);
                 else pd.InsertPointOfInterestWithDescriptionAndImagePath(p);
             }
             return true;
@@ -115,19 +116,47 @@ namespace Geres4U.Controllers
             return View(res);
         }
 
-        public IActionResult RejectPointOfInterestSugestion(int id)
+        public bool RemovePointOfInterestDB(int id)
         {
-            return View();
+            PointOfInterestData pd = new PointOfInterestData(_db);
+            List<PointOfInterestDataModel> pdm = pd.getPointOfInterest(new PointOfInterestDataModel(id)).Result;
+            foreach (PointOfInterestDataModel pidm in pdm)
+            {
+                pd.RemovePointOfInterest(new PointOfInterestDataModel(id));
+            }
+            return true;
         }
 
-        public IActionResult AddPointOfInterest(PointOfInterestByReviser p)
+        public IActionResult RejectPointOfInterestSugestion(int id)
         {
-            return View();
+            bool res = RemovePointOfInterestDB(id);
+            return View(res);
         }
 
         public IActionResult RemovePointOfInterest(int id)
         {
-            return View();
+            bool res = RemovePointOfInterestDB(id);
+            return View(res);
+        }
+
+        public bool AddPointOfInterestToDB(PointOfInterestDataModel p)
+        {
+            PointOfInterestData pd = new PointOfInterestData(_db);
+            if (p.Description != null && p.Images != null)
+            {
+                pd.InsertPointOfInterestWithoutDescriptionAndImage(p);
+            }
+            else if (p.Description != null) pd.InsertPointOfInterestWithDescriptionWithoutImage(p);
+            else pd.InsertPointOfInterestWithDescriptionAndImagePath(p);
+
+            return true;
+        }
+
+        public IActionResult AddPointOfInterest(PointOfInterestByReviser p)
+        {
+            PointOfInterestDataModel pidm = new PointOfInterestDataModel(-1, p.Name, null, p.Lat, p.Long, 0, p.Description);
+            bool res = AddPointOfInterestToDB(pidm);
+            return View(res);
         }
     }
 }
