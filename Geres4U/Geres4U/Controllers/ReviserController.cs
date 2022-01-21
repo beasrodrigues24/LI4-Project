@@ -71,6 +71,7 @@ namespace Geres4U.Controllers
         {
             PointOfInterest pi = GetSpecificPointOfInterestDB(id);
             ViewBag.returning = ret;
+            ViewBag.id = id;
             return View(pi);
         }
 
@@ -141,7 +142,7 @@ namespace Geres4U.Controllers
         {
             bool res = AcceptSugestionOnDB(id);
             ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
-            return View("GetSpecificPointOfInterest");
+            return RedirectToAction("GetSugestions");
         }
 
         public bool RemovePointOfInterestDB(int id)
@@ -161,7 +162,7 @@ namespace Geres4U.Controllers
         {
             bool res = RemovePointOfInterestDB(id);
             ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
-            return View("GetSpecificPointOfInterest");
+            return RedirectToAction("GetSugestions");
         }
 
 

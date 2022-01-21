@@ -55,7 +55,7 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Aprovar", "AcceptPointOfInterestSugestion", new { @Model.Id })
-    @Html.ActionLink("Rejeitar", "RejectPointOfInterestSugestion", new { @Model.Id })
+    @Html.ActionLink("Aprovar", "AcceptPointOfInterestSugestion", new {id = @ViewBag.id }) |
+    @Html.ActionLink("Rejeitar", "RejectPointOfInterestSugestion", new {id = @ViewBag.id }) |
     <a asp-action=@ViewBag.returning>Voltar</a>
 </div>
