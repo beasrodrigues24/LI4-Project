@@ -12,7 +12,7 @@ namespace Geres4U.Controllers
         private readonly IDataAccess _db = new DataAccess();
         public IActionResult Index()
         {
-            return View();
+            return View("Index", (string)TempData.Peek("email"));
         }
         public List<PointOfInterest> GetPointsOfInterestOfDB()
         {
