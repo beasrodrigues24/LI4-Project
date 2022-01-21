@@ -168,23 +168,29 @@ namespace Geres4U.Controllers
         public List<PointOfInterest> GetPointsOfInterestFromCategoryDB(string category)
         {
             PointOfInterestCategoryData pcD = new PointOfInterestCategoryData(_db);
+            PointOfInterestData pd = new PointOfInterestData(_db);
             Category c = new Category(category);
             List<PointOfInterest> ans = new List<PointOfInterest>();
             List<PointOfInterestDataModel> points = pcD.getPointsWithCategory(c.Id);
+            List<PointOfInterestDataModel> confPoints = pd.GetPointsOfInterest().Result;
             if (points.Count > 0)
             {
                 PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
                 foreach (PointOfInterestDataModel pid in points)
                 {
-                    PointOfInterest p = new PointOfInterest(pid.ID, pid.Name, pid.Images, pid.Lat, pid.Long,
-                        pid.isSugestion == 1, pid.Description);
-                    List<CategoryDataModel> cats = pcd.getCategoriesFromPointOfInterest(pid.ID);
-                    if (cats.Count > 0)
-                        foreach (CategoryDataModel cat in cats)
-                        {
-                            p.addCategory(new Category(cat.ID, cat.Name));
-                        }
-                    ans.Add(p);
+                    if (confPoints.Contains(pid))
+                    {
+                        PointOfInterest p = new PointOfInterest(pid.ID, pid.Name, pid.Images, pid.Lat, pid.Long,
+                            pid.isSugestion == 1, pid.Description);
+                        List<CategoryDataModel> cats = pcd.getCategoriesFromPointOfInterest(pid.ID);
+                        if (cats.Count > 0)
+                            foreach (CategoryDataModel cat in cats)
+                            {
+                                p.addCategory(new Category(cat.ID, cat.Name));
+                            }
+
+                        ans.Add(p);
+                    }
                 }
 
                 return ans;

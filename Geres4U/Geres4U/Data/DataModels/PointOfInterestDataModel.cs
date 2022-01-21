@@ -37,7 +37,14 @@ namespace Geres4U.Data.DataModels
 
         public PointOfInterestDataModel()
         {
-
+            
+        }
+        
+        public override bool Equals(object o)
+        {
+            if (o == null || !(o is PointOfInterestDataModel)) return false;
+            PointOfInterestDataModel other = (PointOfInterestDataModel)o;
+            return this.ID == other.ID;
         }
     }
 }

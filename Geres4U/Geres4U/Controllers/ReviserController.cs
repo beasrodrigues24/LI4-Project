@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Geres4U.Data;
 using Geres4U.Data.DataModels;
 using Geres4U.Models;
@@ -90,10 +91,28 @@ namespace Geres4U.Controllers
             return View(ans);
         }
 
+        public bool AcceptSugestionOnDB(int id)
+        {
+            PointOfInterestData pd = new PointOfInterestData(_db);
+            List<PointOfInterestDataModel> pdm = pd.getPointOfInterest(new PointOfInterestDataModel(id)).Result;
+            foreach (PointOfInterestDataModel pidm in pdm)
+            {
+                PointOfInterestDataModel p = new PointOfInterestDataModel(pidm.ID, pidm.Name, pidm.Images, pidm.Lat,
+                    pidm.Long, pidm.isSugestion, pidm.Description);
+                if (p.Description != null && p.Images != null)
+                {
+                    pd.InsertPointOfInterestWithoutDescriptionAndImage(p);
+                }
+                else if (p.Description != null) pd.InsertPointOfInterestWithDescriptionWithoutImage(p);
+                else pd.InsertPointOfInterestWithDescriptionAndImagePath(p);
+            }
+            return true;
+        }
 
         public IActionResult AcceptPointOfInterestSugestion(int id)
         {
-            return View();
+            bool res = AcceptSugestionOnDB(id);
+            return View(res);
         }
 
         public IActionResult RejectPointOfInterestSugestion(int id)
