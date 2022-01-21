@@ -117,17 +117,25 @@ namespace Geres4U.Controllers
         {
             if (ModelState.IsValid)
             {
-                int res = SignInUser(a).Result;
-                if (res == 1)
+
+                int var = SignInUser(a).Result;
+                if (var == 1)
                 {
                     TempData["email"] = currentlyLoggedUser;
                     return RedirectToAction("Index", "Client");
+
                 }
-                else if (res == 2)
+                else
                 {
-                    return RedirectToAction("Index", "Reviser");
+
+                    if (var == -1)
+                        ViewBag.Result = "Password incorreta";
+                    else
+                        ViewBag.Result = "Utilizador inexistente";
+
+
+                    return View("SignIn");
                 }
-                // TODO: Mensagens de Erro para -1 -> Password incorreta ou 0 -> utilizador inexistente
             }
             return View();
         }

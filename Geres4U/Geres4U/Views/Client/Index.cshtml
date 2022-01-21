@@ -5,6 +5,11 @@
     Layout = "_LayoutLoggedIn";
 }
 
+@if (ViewBag.Result != null)
+{
+   <p>@ViewBag.Result</p> 
+}
+
 <h1>Index</h1>
 
 @if (Model != null)
