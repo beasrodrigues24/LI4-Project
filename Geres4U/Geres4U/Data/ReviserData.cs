@@ -15,7 +15,8 @@ namespace Geres4U.Data
 
         public Task<List<ReviserDataModel>> getReviser(ReviserDataModel reviser)
         {
-            string sql = "SELECT * FROM geres4udb.Reviser WHERE Email = @Email";
+            string quote = "\"";
+            string sql = "SELECT * FROM geres4udb.Reviser WHERE Email = " + quote + reviser.Email + quote;
             return _db.LoadData<ReviserDataModel, dynamic>(sql, reviser);
         }
 

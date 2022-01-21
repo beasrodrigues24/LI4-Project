@@ -175,7 +175,40 @@ namespace Geres4U.Controllers
             List<PointOfInterest> points = getHistoryFromClient();
             return View(points);
         }
+        public List<PointOfInterest> getPointsOfInterestFromCategoryDB(string category)
+        {
+            PointOfInterestCategoryData pcD = new PointOfInterestCategoryData(_db);
+            Category c = new Category(category);
+            List<PointOfInterest> ans = new List<PointOfInterest>();
+            List<PointOfInterestDataModel> points = pcD.getPointsWithCategory(c.Id);
+            if (points.Count > 0)
+            {
+                PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
+                foreach (PointOfInterestDataModel pid in points)
+                {
+                    PointOfInterest p = new PointOfInterest(pid.ID, pid.Name, pid.Images, pid.Lat, pid.Long,
+                        pid.isSugestion == 1, pid.Description);
+                    List<CategoryDataModel> cats = pcd.getCategoriesFromPointOfInterest(pid.ID);
+                    if (cats.Count > 0)
+                        foreach (CategoryDataModel cat in cats)
+                        {
+                            p.addCategory(new Category(cat.ID, cat.Name));
+                        }
+                    ans.Add(p);
+                }
 
+                return ans;
+            }
+            return null;
+        }
+
+        public IActionResult getPointsOfInterestFromCategory(string category)
+        {
+            List<PointOfInterest> points = getPointsOfInterestFromCategoryDB(category);
+            return View(points);
+        }
+
+        // TODO
         public IActionResult SuggestPointOfInterest()
         {
             return View();

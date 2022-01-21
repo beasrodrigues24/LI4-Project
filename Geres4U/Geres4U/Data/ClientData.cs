@@ -15,7 +15,8 @@ namespace Geres4U.Data
 
         public Task<List<ClientDataModel>> getClient(ClientDataModel client)
         {
-            string sql = "SELECT * FROM geres4udb.client WHERE Email = @Email";
+            string quote = "\"";
+            string sql = "SELECT * FROM geres4udb.client WHERE Email = " + quote + client.Email + quote;
             return _db.LoadData<ClientDataModel, dynamic>(sql, client);
         }
 

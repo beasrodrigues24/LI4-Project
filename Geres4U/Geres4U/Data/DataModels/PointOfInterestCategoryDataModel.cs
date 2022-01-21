@@ -19,5 +19,11 @@ namespace Geres4U.Data.DataModels
             this.CategoryID = CategoryID;
             this.PointOfInterestID = PointOfInterestID;
         }
+
+        public PointOfInterestCategoryDataModel(Int32 CategoryID, bool isCat)
+        {
+            this.CategoryID = CategoryID;
+            this.PointOfInterestID = -1;
+        }
     }
 }

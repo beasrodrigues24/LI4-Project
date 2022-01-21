@@ -39,11 +39,39 @@ namespace Geres4U.Data
             return ans;
         }
 
+        public Task<List<PointOfInterestCategoryDataModel>> getPointsFromCategoryDataModel(PointOfInterestCategoryDataModel c)
+        {
+            string sql = @"SELECT * FROM geres4udb.pointofinterestcategory
+                           WHERE CategoryID = " + c.CategoryID;
+            return _db.LoadData<PointOfInterestCategoryDataModel, dynamic>(sql, new { });
+        }
+
         public Task InsertCategory(PointOfInterestCategoryDataModel pointOfInterestCategory)
         {
-            string sql = @"INSERT INTO geres4udb.PointOfInterestCategory (CategoryID, PointOfInterestID)
+            string sql = @"INSERT INTO geres4udb.pointofinterestcategory (CategoryID, PointOfInterestID)
                            VALUES (" + pointOfInterestCategory.CategoryID + ", " + pointOfInterestCategory.PointOfInterestID + ")"; 
             return _db.SaveData(sql, pointOfInterestCategory);
         }
+
+        
+        public List<PointOfInterestDataModel> getPointsWithCategory(int category)
+        {
+            PointOfInterestData piD = new PointOfInterestData(_db);
+            PointOfInterestCategoryDataModel pDM = new PointOfInterestCategoryDataModel(category, true);
+            Task<List<PointOfInterestCategoryDataModel>> pointsFromCat = getPointsFromCategoryDataModel(pDM);
+            List<PointOfInterestCategoryDataModel> ps = pointsFromCat.Result;
+            List<PointOfInterestDataModel> ans = new List<PointOfInterestDataModel>();
+            foreach (PointOfInterestCategoryDataModel piDM in ps)
+            {
+                Task<List<PointOfInterestDataModel>> t = piD.getPointOfInterest(new PointOfInterestDataModel(piDM.PointOfInterestID));
+                foreach (PointOfInterestDataModel p in t.Result)
+                {
+                    ans.Add(p);
+                }
+            }
+
+            return ans;
+        }
+        
     }
 }
