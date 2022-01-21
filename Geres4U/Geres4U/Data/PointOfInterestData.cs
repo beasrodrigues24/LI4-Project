@@ -86,6 +86,22 @@ namespace Geres4U.Data
             return _db.SaveData(sql, pointOfInterest);
         }
 
+        public Task UpdatePointOfInterestWithoutImagePath(PointOfInterestDataModel pointOfInterest)
+        {
+            string lat = pointOfInterest.Lat.ToString().Replace(',', '.');
+            string lon = pointOfInterest.Long.ToString().Replace(',', '.');
+            string sql = "UPDATE `geres4udb`.`pointofinterest` SET `Name` = @Name, `Lat` = '" + lat + "', `Long` = '" + lon + "', `isSugestion` = '0', `Description` = @Description WHERE(`ID` = '" + pointOfInterest.ID + "')";
+            return _db.SaveData(sql, pointOfInterest);
+        }
+
+        public Task UpdatePointOfInterestWithoutImagePathAndDescription(PointOfInterestDataModel pointOfInterest)
+        {
+            string lat = pointOfInterest.Lat.ToString().Replace(',', '.');
+            string lon = pointOfInterest.Long.ToString().Replace(',', '.');
+            string sql = "UPDATE `geres4udb`.`pointofinterest` SET `Name` = @Name, `Lat` = '" + lat + "', `Long` = '" + lon + "', `isSugestion` = '0', WHERE(`ID` = '" + pointOfInterest.ID + "')";
+            return _db.SaveData(sql, pointOfInterest);
+        }
+
         public Task RemovePointOfInterest(PointOfInterestDataModel pointOfInterest)
         {
             string sql = "DELETE FROM geres4udb.pointofinterest WHERE(`ID` = '" + pointOfInterest.ID +"')";

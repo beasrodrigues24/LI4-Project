@@ -125,6 +125,10 @@ namespace Geres4U.Controllers
                     return RedirectToAction("Index", "Client");
 
                 }
+                else if (var == 2)
+                {
+                    return RedirectToAction("Index", "Reviser");
+                }
                 else
                 {
 

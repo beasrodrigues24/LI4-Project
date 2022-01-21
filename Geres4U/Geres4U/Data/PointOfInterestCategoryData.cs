@@ -46,10 +46,15 @@ namespace Geres4U.Data
             return _db.LoadData<PointOfInterestCategoryDataModel, dynamic>(sql, new { });
         }
 
+        public Task removeCategoryOfPoint(PointOfInterestCategoryDataModel id)
+        {
+            string sql = "DELETE FROM geres4udb.pointofinterestcategory WHERE (`PointOfInterestID` = '" + id.PointOfInterestID + "')";
+            return _db.SaveData(sql, id);
+        }
+
         public Task InsertCategory(PointOfInterestCategoryDataModel pointOfInterestCategory)
         {
-            string sql = @"INSERT INTO geres4udb.pointofinterestcategory (CategoryID, PointOfInterestID)
-                           VALUES (" + pointOfInterestCategory.CategoryID + ", " + pointOfInterestCategory.PointOfInterestID + ")"; 
+            string sql = "INSERT INTO geres4udb.pointofinterestcategory (`CategoryID`, `PointOfInterestID`) VALUES('" + pointOfInterestCategory.CategoryID + "', '" + pointOfInterestCategory.PointOfInterestID + "')";
             return _db.SaveData(sql, pointOfInterestCategory);
         }
 

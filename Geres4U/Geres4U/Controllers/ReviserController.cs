@@ -96,15 +96,14 @@ namespace Geres4U.Controllers
             List<PointOfInterestDataModel> pdm = pd.getPointOfInterest(new PointOfInterestDataModel(id)).Result;
             foreach (PointOfInterestDataModel pidm in pdm)
             {
-                pd.RemovePointOfInterest(new PointOfInterestDataModel(id));
                 PointOfInterestDataModel p = new PointOfInterestDataModel(pidm.ID, pidm.Name, pidm.Images, pidm.Lat,
                     pidm.Long, 0, pidm.Description);
                 if (p.Description != null && p.Images != null)
                 {
-                    pd.InsertPointOfInterestWithoutDescriptionAndImage(p);
+                    pd.UpdatePointOfInterestWithoutImagePathAndDescription(p);
                 }
-                else if (p.Description != null)pd.InsertPointOfInterestWithDescriptionWithoutImage(p);
-                else pd.InsertPointOfInterestWithDescriptionAndImagePath(p);
+                else if (p.Description != null)pd.UpdatePointOfInterestWithoutImagePath(p);
+                else pd.UpdatePointOfInterest(p);
             }
             return true;
         }
@@ -118,11 +117,13 @@ namespace Geres4U.Controllers
         public bool RemovePointOfInterestDB(int id)
         {
             PointOfInterestData pd = new PointOfInterestData(_db);
+            PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
             List<PointOfInterestDataModel> pdm = pd.getPointOfInterest(new PointOfInterestDataModel(id)).Result;
             foreach (PointOfInterestDataModel pidm in pdm)
             {
                 pd.RemovePointOfInterest(new PointOfInterestDataModel(id));
             }
+            pcd.removeCategoryOfPoint(new PointOfInterestCategoryDataModel(id));
             return true;
         }
 
@@ -178,8 +179,7 @@ namespace Geres4U.Controllers
             List<PointOfInterestDataModel> pdm = pd.getPointOfInterest(p).Result;
             if (pdm != null && pdm.Count > 0)
             {
-                await pd.RemovePointOfInterest(p);
-                AddPointOfInterestToDB(p);
+                await pd.UpdatePointOfInterest(p);
                 return true;
             }
             else return false;
@@ -192,6 +192,27 @@ namespace Geres4U.Controllers
             PointOfInterestDataModel pdm =
                 new PointOfInterestDataModel(p.Id, p.Name, p.ImagePath, p.Lat, p.Long, 0, p.Description);
             bool res = UpdatePointOfInterestOnDB(pdm).Result;
+            return View(res);
+        }
+
+        public async Task<bool> AddCategoryToPointOnDB(PointOfInterestCategoryDataModel p)
+        {
+            PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
+            await pcd.InsertCategory(p);
+            return true;
+        }
+
+        public IActionResult AddCategoryToPointOfInterest(int pointID, string categoryName)
+        {
+            bool res;
+            Category c = new Category(categoryName);
+            if(c.Id == -1) res = false;
+            else
+            {
+                PointOfInterestCategoryDataModel p = new PointOfInterestCategoryDataModel(c.Id, pointID);
+                res = AddCategoryToPointOnDB(p).Result;
+            }
+
             return View(res);
         }
 
