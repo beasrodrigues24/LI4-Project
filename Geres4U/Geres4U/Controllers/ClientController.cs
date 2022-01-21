@@ -207,10 +207,32 @@ namespace Geres4U.Controllers
             List<PointOfInterest> points = GetPointsOfInterestFromCategoryDB(category);
             return View(points);
         }
-
-        // TODO
+           
         public IActionResult SuggestPointOfInterest()
         {
+            return View();
+        }
+
+        public async Task<bool> AddPointOfInterestSugestionToDB(PointOfInterestDataModel pidm)
+        {
+            PointOfInterestData pid = new PointOfInterestData(_db);
+            if (pidm.Description != null)
+                await pid.InsertPointOfInterestSugestion(pidm);
+            else await pid.InsertPointOfInterestSugestionWithoutDescription(pidm);
+            return true;
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SuggestPointOfInterest(PointOfInterestSugestion p)
+        {
+            if (ModelState.IsValid)
+            {
+                PointOfInterestDataModel pidm =
+                    new PointOfInterestDataModel(-1, p.Name, null, p.Lat, p.Long, 1, p.Description);
+                bool flag = AddPointOfInterestSugestionToDB(pidm).Result;
+                return RedirectToAction("Index"); // TODO
+            }
             return View();
         }
     }

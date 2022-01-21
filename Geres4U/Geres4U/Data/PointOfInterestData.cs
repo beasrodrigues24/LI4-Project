@@ -55,15 +55,21 @@ namespace Geres4U.Data
         // Nunca poderá adicionar sugestões c imagens visto que a imagem é o local path
         public Task InsertPointOfInterestSugestionWithoutDescription(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"INSERT INTO geres4udb.pointofinterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                           VALUES (" + pointOfInterest.ID + ", @Name, NULL, " + pointOfInterest.Lat + ", " + pointOfInterest.Long + ", 1, NULL) END";
+            string lat = pointOfInterest.Lat.ToString().Replace(',', '.');
+            string lon = pointOfInterest.Long.ToString().Replace(',', '.');
+            string quote = "\'";
+            string sql =
+                "INSERT INTO geres4udb.pointofinterest (`Name`, `Lat`, `Long`, `isSugestion`) VALUES (@Name, '" + lat + "', '" + lon + "', '1')";
             return _db.SaveData(sql, pointOfInterest);
         }
 
         public Task InsertPointOfInterestSugestion(PointOfInterestDataModel pointOfInterest)
         {
-            string sql = @"INSERT INTO geres4udb.pointofinterest(ID, Name, Images, Lat, Long, isSugestion, Description)
-                            VALUES (" + pointOfInterest.ID + ", @Name, NULL, " + pointOfInterest.Lat + ", " + pointOfInterest.Long + ", 0, @Description) END";
+            string lat = pointOfInterest.Lat.ToString().Replace(',', '.');
+            string lon = pointOfInterest.Long.ToString().Replace(',', '.');
+            string quote = "\'";
+            string sql =
+                "INSERT INTO geres4udb.pointofinterest (`Name`, `Lat`, `Long`, `isSugestion`, `Description`) VALUES (@Name, '" + lat + "', '" + lon + "', '1', @Description)";
             return _db.SaveData(sql, pointOfInterest);
         }
 
