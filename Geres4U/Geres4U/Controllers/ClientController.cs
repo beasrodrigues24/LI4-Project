@@ -76,9 +76,10 @@ namespace Geres4U.Controllers
             return null;
         }
 
-        public IActionResult GetSpecificPointOfInterest(int id)
+        public IActionResult GetSpecificPointOfInterest(int id, string ret)
         {
             PointOfInterest pi = GetSpecificPointOfInterestDB(id);
+            ViewBag.returning = ret;
             return View(pi);
         }
 

@@ -2,13 +2,18 @@
 
 @{
     ViewData["Title"] = "GetSpecificPointOfInterest";
-    Layout = "_LayoutLoggedIn";
+    Layout = "_LayoutAdmin";
+}
+
+@if (ViewBag.result != null)
+{
+    <p>@ViewBag.result</p>
 }
 
 <h1>GetSpecificPointOfInterest</h1>
 
 <div>
-    <h4>PointOfInterest</h4>
+    <h4>Ponto</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -50,5 +55,7 @@
     </dl>
 </div>
 <div>
+    @Html.ActionLink("Aprovar", "AcceptPointOfInterestSugestion", new { @Model.Id })
+    @Html.ActionLink("Rejeitar", "RejectPointOfInterestSugestion", new { @Model.Id })
     <a asp-action=@ViewBag.returning>Voltar</a>
 </div>

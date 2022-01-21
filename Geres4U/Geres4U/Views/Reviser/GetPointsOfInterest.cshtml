@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "GetPointsOfInterest";
-    Layout = "_LayoutLoggedIn";
+    Layout = "_LayoutAdmin";
 }
 
 @if (ViewBag.result != null)
@@ -80,7 +80,7 @@
                         @Html.DisplayFor(modelItem => item.Long)
                     </td>
                     <td>
-                        @Html.ActionLink("Ler mais", "GetSpecificPointOfInterest", "Reviser", new { item.Id }, null)
+                        @Html.ActionLink("Ler mais", "GetSpecificPointOfInterest", "Reviser", new { id = item.Id, ret = "GetPointsOfInterest" }, null)
                     </td>
                 </tr>
             }

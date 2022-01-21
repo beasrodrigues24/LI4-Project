@@ -45,6 +45,35 @@ namespace Geres4U.Controllers
             return ans;
         }
 
+        public PointOfInterest GetSpecificPointOfInterestDB(int id)
+        {
+            PointOfInterestData pd = new PointOfInterestData(_db);
+            List<PointOfInterestDataModel> points = pd.getPointOfInterest(new PointOfInterestDataModel(id)).Result;
+            if (points.Count > 0)
+            {
+                PointOfInterest ans = new PointOfInterest(); // vai sempre avançar para o for pq count > 0, mas sou obrigado a inicializar aqui senão não dá pra adicionar categorias
+                foreach (PointOfInterestDataModel pdm in points)
+                {
+                    ans = new PointOfInterest(pdm.ID, pdm.Name, pdm.Images, pdm.Lat, pdm.Long, pdm.isSugestion == 1,
+                        pdm.Description);
+                }
+                PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
+                List<CategoryDataModel> cats = pcd.getCategoriesFromPointOfInterest(id);
+                foreach (CategoryDataModel c in cats)
+                    ans.addCategory(new Category(c.ID, c.Name));
+                return ans;
+            }
+
+            return null;
+        }
+
+        public IActionResult GetSpecificPointOfInterest(int id, string ret)
+        {
+            PointOfInterest pi = GetSpecificPointOfInterestDB(id);
+            ViewBag.returning = ret;
+            return View(pi);
+        }
+
         public IActionResult GetPointsOfInterest()
         {
             List<PointOfInterest> ans = GetPointsOfInterestOfDB();
@@ -111,7 +140,8 @@ namespace Geres4U.Controllers
         public IActionResult AcceptPointOfInterestSugestion(int id)
         {
             bool res = AcceptSugestionOnDB(id);
-            return View(res);
+            ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
+            return View("GetSpecificPointOfInterest");
         }
 
         public bool RemovePointOfInterestDB(int id)
@@ -130,13 +160,23 @@ namespace Geres4U.Controllers
         public IActionResult RejectPointOfInterestSugestion(int id)
         {
             bool res = RemovePointOfInterestDB(id);
-            return View(res);
+            ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
+            return View("GetSpecificPointOfInterest");
         }
 
+
+        public IActionResult RemovePointOfInterest()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult RemovePointOfInterest(int id)
         {
             bool res = RemovePointOfInterestDB(id);
-            return View(res);
+            ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
+            return View("Index");
         }
 
         public bool AddPointOfInterestToDB(PointOfInterestDataModel p)
@@ -164,7 +204,8 @@ namespace Geres4U.Controllers
         {
             PointOfInterestDataModel pidm = new PointOfInterestDataModel(-1, p.Name, p.ImagePath, p.Lat, p.Long, 0, p.Description);
             bool res = AddPointOfInterestToDB(pidm);
-            return View(res);
+            ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
+            return View("Index");
         }
 
         public IActionResult UpdatePointOfInterest()
@@ -192,7 +233,8 @@ namespace Geres4U.Controllers
             PointOfInterestDataModel pdm =
                 new PointOfInterestDataModel(p.Id, p.Name, p.ImagePath, p.Lat, p.Long, 0, p.Description);
             bool res = UpdatePointOfInterestOnDB(pdm).Result;
-            return View(res);
+            ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
+            return View("Index");
         }
 
         public async Task<bool> AddCategoryToPointOnDB(PointOfInterestCategoryDataModel p)

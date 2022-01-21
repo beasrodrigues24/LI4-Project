@@ -80,7 +80,7 @@
                         @Html.DisplayFor(modelItem => item.Long)
                     </td>
                     <td>
-                        @Html.ActionLink("Ler mais", "GetSpecificPointOfInterest", "Client", new { item.Id }, null)
+                        @Html.ActionLink("Ler mais", "GetSpecificPointOfInterest", "Client", new { id = item.Id, ret = "GetPointsOfInterest" }, null)
                     </td>
                     <td>
                         @Html.ActionLink("Adicionar ao histórico", "AddPointVisited", "Client", new { item.Id }, null)
