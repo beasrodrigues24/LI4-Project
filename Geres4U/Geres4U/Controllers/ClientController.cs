@@ -143,7 +143,7 @@ namespace Geres4U.Controllers
             return View();
         }
 
-        public List<PointOfInterest> getHistoryFromClient()
+        public List<PointOfInterest> GetHistoryFromClient()
         {
             ClientHistoryData chD = new ClientHistoryData(_db);
             List<PointOfInterest> ans = new List<PointOfInterest>();
@@ -172,10 +172,10 @@ namespace Geres4U.Controllers
 
         public IActionResult GetPointsVisited()
         {
-            List<PointOfInterest> points = getHistoryFromClient();
+            List<PointOfInterest> points = GetHistoryFromClient();
             return View(points);
         }
-        public List<PointOfInterest> getPointsOfInterestFromCategoryDB(string category)
+        public List<PointOfInterest> GetPointsOfInterestFromCategoryDB(string category)
         {
             PointOfInterestCategoryData pcD = new PointOfInterestCategoryData(_db);
             Category c = new Category(category);
@@ -202,9 +202,9 @@ namespace Geres4U.Controllers
             return null;
         }
 
-        public IActionResult getPointsOfInterestFromCategory(string category)
+        public IActionResult GetPointsOfInterestFromCategory(string category)
         {
-            List<PointOfInterest> points = getPointsOfInterestFromCategoryDB(category);
+            List<PointOfInterest> points = GetPointsOfInterestFromCategoryDB(category);
             return View(points);
         }
 
