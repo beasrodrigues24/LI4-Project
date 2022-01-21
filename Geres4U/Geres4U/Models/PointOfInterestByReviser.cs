@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Geres4U.Models
 {
-    public class PointOfInterestSugestion
+    public class PointOfInterestByReviser
     {
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "You need to provide the name of the point of interest.")]
-        [MaxLength(64, ErrorMessage = "Maximum name length is 64 characters")]
+        [MaxLength(64, ErrorMessage = "Maximum name length is 64 characters.")]
         public string Name { get; set; }
+
+        [Display(Name = "Imagem")]
+        [MaxLength(2048, ErrorMessage = "Maximum path length is 2048 characters.")]
+        public string ImagePath { get; set; }
 
         [Display(Name = "Latitude")]
         [Required(ErrorMessage = "You need to provide the latitude of the point of interest.")]
