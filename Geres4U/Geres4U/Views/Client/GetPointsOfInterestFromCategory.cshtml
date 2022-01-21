@@ -2,14 +2,12 @@
 
 @{
     ViewData["Title"] = "GetPointsOfInterestFromCategory";
+    Layout = "_LayoutLoggedIn";
 }
 
 <h1>GetPointsOfInterestFromCategory</h1>
 
-@if (Model != null && Model.Count() != 0)
-{
-
-    <button class="btn">Filtrar por</button>
+<button class="btn">Filtrar por</button>
     <div class="dropdown">
         <button class="btn" style="border-left:1px solid navy">
             <i class="fa fa-caret-down"></i>
@@ -35,6 +33,9 @@
             <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "Aldeias"})">Aldeias</a>
         </div>
     </div>
+
+@if (Model != null && Model.Count() != 0)
+{
 
     <table class="table">
         <thead>
