@@ -4,7 +4,7 @@ using Geres4U.Data.DataModels;
 
 namespace Geres4U.Data
 {
-    public class ClientData : IClientData
+    public class ClientData
     {
         private readonly IDataAccess _db;
 

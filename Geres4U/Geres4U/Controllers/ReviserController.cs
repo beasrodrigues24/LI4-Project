@@ -36,7 +36,7 @@ namespace Geres4U.Controllers
 
                         foreach (Category c in cat)
                         {
-                            p.addCategory(c);
+                            p.Category = c.Name;
                         }
                     }
                     ans.Add(p);
@@ -60,7 +60,7 @@ namespace Geres4U.Controllers
                 PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
                 List<CategoryDataModel> cats = pcd.getCategoriesFromPointOfInterest(id);
                 foreach (CategoryDataModel c in cats)
-                    ans.addCategory(new Category(c.ID, c.Name));
+                    ans.Category = c.Name;
                 return ans;
             }
 
@@ -104,7 +104,7 @@ namespace Geres4U.Controllers
 
                         foreach (Category c in cat)
                         {
-                            p.addCategory(c);
+                            p.Category = c.Name;
                         }
                     }
                     ans.Add(p);
@@ -266,25 +266,43 @@ namespace Geres4U.Controllers
             return View("UpdatePointOfInterest");
         }
 
-        public async Task<bool> AddCategoryToPointOnDB(PointOfInterestCategoryDataModel p)
+        public List<PointOfInterest> GetPointsOfInterestFromCategoryDB(string category)
         {
-            PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
-            await pcd.InsertCategory(p);
-            return true;
+            PointOfInterestCategoryData pcD = new PointOfInterestCategoryData(_db);
+            PointOfInterestData pd = new PointOfInterestData(_db);
+            Category c = new Category(category);
+            List<PointOfInterest> ans = new List<PointOfInterest>();
+            List<PointOfInterestDataModel> points = pcD.getPointsWithCategory(c.Id);
+            List<PointOfInterestDataModel> confPoints = pd.GetPointsOfInterest().Result;
+            if (points.Count > 0)
+            {
+                PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
+                foreach (PointOfInterestDataModel pid in points)
+                {
+                    if (confPoints.Contains(pid))
+                    {
+                        PointOfInterest p = new PointOfInterest(pid.ID, pid.Name, pid.Images, pid.Lat, pid.Long,
+                            pid.isSugestion == 1, pid.Description);
+                        List<CategoryDataModel> cats = pcd.getCategoriesFromPointOfInterest(pid.ID);
+                        if (cats.Count > 0)
+                            foreach (CategoryDataModel cat in cats)
+                            {
+                                p.Category = cat.Name;
+                            }
+
+                        ans.Add(p);
+                    }
+                }
+
+                return ans;
+            }
+            return null;
         }
 
-        public IActionResult AddCategoryToPointOfInterest(int pointID, string categoryName)
+        public IActionResult GetPointsOfInterestFromCategory(string category)
         {
-            bool res;
-            Category c = new Category(categoryName);
-            if(c.Id == -1) res = false;
-            else
-            {
-                PointOfInterestCategoryDataModel p = new PointOfInterestCategoryDataModel(c.Id, pointID);
-                res = AddCategoryToPointOnDB(p).Result;
-            }
-
-            return View(res);
+            List<PointOfInterest> points = GetPointsOfInterestFromCategoryDB(category);
+            return View("GetPointsOfInterest", points);
         }
 
         public IActionResult LoggingOut()

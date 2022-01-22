@@ -25,7 +25,7 @@ namespace Geres4U.Models
         [Display(Name = "Descrição")]
         public string Description { get; set; }
 
-        public HashSet<Category> Categories { get; set; }
+        public string Category { get; set; }
 
         public PointOfInterest()
         {
@@ -41,12 +41,7 @@ namespace Geres4U.Models
             Long = lon;
             IsSugestion = isSugestion;
             Description = description;
-            Categories = new HashSet<Category>();
-        }
-
-        public void addCategory(Category c)
-        {
-            Categories.Add(c);
+            Category = "";
         }
     }
 }

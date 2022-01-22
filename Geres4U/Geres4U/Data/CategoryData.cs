@@ -4,7 +4,7 @@ using Geres4U.Data.DataModels;
 
 namespace Geres4U.Data
 {
-    public class CategoryData : ICategoryData
+    public class CategoryData
     {
         public readonly IDataAccess _db;
 

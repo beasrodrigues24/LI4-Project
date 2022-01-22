@@ -38,7 +38,7 @@ namespace Geres4U.Controllers
 
                         foreach (Category c in cat)
                         {
-                            p.addCategory(c);
+                            p.Category = c.Name;
                         }
                     }
                     ans.Add(p);
@@ -69,7 +69,7 @@ namespace Geres4U.Controllers
                 PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
                 List<CategoryDataModel> cats = pcd.getCategoriesFromPointOfInterest(id);
                 foreach (CategoryDataModel c in cats)
-                    ans.addCategory(new Category(c.ID, c.Name));
+                    ans.Category = c.Name;
                 return ans;
             }
 
@@ -150,7 +150,7 @@ namespace Geres4U.Controllers
                     if(cats.Count > 0)
                         foreach (CategoryDataModel cat in cats)
                         {
-                            p.addCategory(new Category(cat.ID, cat.Name));
+                            p.Category = cat.Name;
                         }
                     ans.Add(p);
                 }
@@ -187,7 +187,7 @@ namespace Geres4U.Controllers
                         if (cats.Count > 0)
                             foreach (CategoryDataModel cat in cats)
                             {
-                                p.addCategory(new Category(cat.ID, cat.Name));
+                                p.Category = cat.Name;
                             }
 
                         ans.Add(p);

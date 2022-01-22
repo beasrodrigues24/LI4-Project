@@ -4,7 +4,7 @@ using Geres4U.Data.DataModels;
 
 namespace Geres4U.Data
 {
-    public class PointOfInterestData : IPointOfInterestData
+    public class PointOfInterestData
     {
         private readonly IDataAccess _db;
 
