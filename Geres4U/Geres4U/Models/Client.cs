@@ -6,19 +6,20 @@ namespace Geres4U.Models
     public class Client
     {
         [Display(Name = "Email")]
-        [Required(ErrorMessage = "You need to provide an email")]
-        [DataType(DataType.EmailAddress)] // valida se o endereço de email é válido
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [DataType(DataType.EmailAddress)] 
         public string Email { get; set; }
 
         [Display(Name = "Password")]
-        [Required(ErrorMessage = "You must provide a password")]
+        [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.Password)]
-        [StringLength(32, MinimumLength = 6, ErrorMessage = "You need to provide a password with at least 6 characters and maximum of 32 characters.")]
+        [StringLength(32, MinimumLength = 6, ErrorMessage = "Mínimo de 6 caracteres, máximo de 32 caracteres")]
         public string Password { get; set; }
 
         [Display(Name = "Confirm Password")]
+        [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.Password)]
-        [Compare(("Password"), ErrorMessage = "The provided password doesn't match.")]
+        [Compare(("Password"), ErrorMessage = "Passwords inseridas não são iguais")]
         public string ConfirmPassword { get; set; }
     }
 }

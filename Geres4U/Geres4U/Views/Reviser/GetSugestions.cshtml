@@ -7,45 +7,52 @@
 
 <h1>Sugestões</h1>
 
+@if (Model != null && Model.Count() != 0)
+{
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Lat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Long)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagePath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Long)
-            </td>
-            <td>
-            <td>
-                @Html.ActionLink("Ler mais", "GetSpecificPointOfInterest", "Reviser", new { id = item.Id, ret = "GetSugestions" }, null)
-            </td>
-        </tr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImagePath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Long)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImagePath)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Long)
+                    </td>
+                    <td>
+                        <td>
+                            @Html.ActionLink("Ler mais", "GetSpecificPointOfInterest", "Reviser", new { id = item.Id, ret = "GetSugestions" }, null)
+                        </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+} else
+{
+    <h3>Sem pontos disponíveis</h3>
 }
-    </tbody>
-</table>

@@ -10,10 +10,9 @@
     <p>@ViewBag.result</p>
 }
 
-<h1>GetSpecificPointOfInterest</h1>
+<h1>Ponto</h1>
 
 <div>
-    <h4>Ponto</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -58,6 +57,7 @@
     @if (((string) (ViewBag.returning)).Equals("GetSugestions")) 
     {
         @Html.ActionLink("Aprovar", "AcceptPointOfInterestSugestion", new {id = @ViewBag.id }) 
+        <a></a>
         @Html.ActionLink("Rejeitar", "RejectPointOfInterestSugestion", new { id = @ViewBag.id });
     }
     <a asp-action=@ViewBag.returning>Voltar</a>

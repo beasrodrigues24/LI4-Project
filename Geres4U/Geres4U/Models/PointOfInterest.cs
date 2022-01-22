@@ -5,18 +5,24 @@ namespace Geres4U.Models
 {
     public class PointOfInterest
     {
+        [Display(Name = "ID")]
         public int Id { get; set; }
 
+        [Display(Name = "Nome")]
         public string Name { get; set; }
 
+        [Display(Name = "Imagem")]
         public string ImagePath { get; set; }
 
+        [Display(Name = "Latitude")]
         public double Lat { get; set; }
 
+        [Display(Name = "Longitude")]
         public double Long { get; set; }
 
         public bool IsSugestion { get; set; }
 
+        [Display(Name = "Descrição")]
         public string Description { get; set; }
 
         public HashSet<Category> Categories { get; set; }

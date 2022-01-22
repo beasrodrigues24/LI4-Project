@@ -4,10 +4,11 @@ namespace Geres4U.Models
 {
     public class Authentication
     {
-        [Required]
+        [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

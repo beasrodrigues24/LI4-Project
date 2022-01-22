@@ -10,7 +10,7 @@
     <p>@ViewBag.result</p>
 }
 
-<h1>GetPointsOfInterest</h1>
+<h1>Locais a visitar</h1>
 
 @if (Model != null && Model.Count() != 0)
 {
@@ -22,11 +22,11 @@
         </button>
         <div class="dropdown-content">
             <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "Monumentos"})">Monumentos</a>
-            <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "EdificioReligioso"})">Edifício Religioso"</a>
+            <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "EdificioReligioso"})">Edifício Religioso</a>
             <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "Cascata"})">Cascata</a>
             <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "Lagoa"})">Lagoa</a>
             <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "PraiaFluvial"})">Praia Fluvial</a>
-            <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "Miradouro"})">Miradouro)</a>
+            <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "Miradouro"})">Miradouro</a>
             <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "ParqueLazer"})">Parque de Lazer</a>
             <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "ParqueNatural"})">Parque Natural</a>
             <a href="@Url.ActionLink("GetPointsOfInterestFromCategory", "Client", new {category = "Passadicos"})">Passadiços</a>
@@ -91,5 +91,5 @@
     </table>
 } else
 {
-    <h3>No points to show</h3>
+    <h3>Sem pontos disponíveis</h3>
 }

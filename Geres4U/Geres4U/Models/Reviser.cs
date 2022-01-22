@@ -6,23 +6,23 @@ namespace Geres4U.Models
     public class Reviser
     {
         [Display(Name = "Email")]
-        [Required(ErrorMessage = "You need to provide an email")]
-        [MaxLength(150, ErrorMessage = "Maximum size of email is 150 characters.")]
-        [DataType(DataType.EmailAddress)] // valida se o endereço de email é válido
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [MaxLength(150, ErrorMessage = "Comprimento máximo de 150 caracteres")]
+        [DataType(DataType.EmailAddress)]
         public String Email { get; set; }
 
         [Display(Name = "Confirm Email")]
-        [Compare("EmailAddress", ErrorMessage = "The provided Emails doesn't match.")]
+        [Compare("EmailAddress", ErrorMessage = "Os emails inseridos não são iguais")]
         public String ConfirmEmail { get; set; }
 
         [Display(Name = "Password")]
-        [Required(ErrorMessage = "You must provide a password")]
+        [Required(ErrorMessage = "Campo obrigatório")]
         [DataType(DataType.Password)]
-        [StringLength(32, MinimumLength = 5, ErrorMessage = "You need to provide a password with at least 5 characters and maximum of 32 characters.")]
+        [StringLength(32, MinimumLength = 5, ErrorMessage = "Mínimo de 5 caracteres, máximo de 32 caracteres")]
         public String Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Compare(("Password"), ErrorMessage = "The provided password doesn't match.")]
+        [Compare(("Password"), ErrorMessage = "As passwords inseridas não são iguais")]
         public String ConfirmPassword { get; set; }
 
     }

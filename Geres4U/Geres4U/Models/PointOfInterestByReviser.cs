@@ -5,28 +5,28 @@ namespace Geres4U.Models
     public class PointOfInterestByReviser
     {
         [Display(Name = "Nome")]
-        [Required(ErrorMessage = "You need to provide the name of the point of interest.")]
-        [MaxLength(64, ErrorMessage = "Maximum name length is 64 characters.")]
+        [Required(ErrorMessage = "Campo obrigatório")]
+        [MaxLength(64, ErrorMessage = "Comprimento máximo de 64 caracteres")]
         public string Name { get; set; }
 
         [Display(Name = "Imagem")]
-        [MaxLength(2048, ErrorMessage = "Maximum path length is 2048 characters.")]
+        [MaxLength(2048, ErrorMessage = "Comprimento máximo de 2048 caracteres")]
         public string ImagePath { get; set; }
 
         [Display(Name = "Latitude")]
-        [Required(ErrorMessage = "You need to provide the latitude of the point of interest.")]
+        [Required(ErrorMessage = "Campo obrigatório")]
         public double Lat { get; set; }
 
         [Display(Name = "Longitude")]
-        [Required(ErrorMessage = "You need to provide the longitude of the point of interest.")]
+        [Required(ErrorMessage = "Campo obrigatório")]
         public double Long { get; set; }
 
         [Display(Name = "Descrição")]
-        [MaxLength(255)]
+        [MaxLength(255, ErrorMessage = "Comprimento máximo de 255 caracteres")]
         public string Description { get; set; }
 
         [Display(Name = "Categoria")]
-        [CategoryValidation(ErrorMessage = "A Categoria inserida é inválida.")]
+        [CategoryValidation(ErrorMessage = "A categoria inserida é inválida.")]
         public string Category { get; set; }
     }
 }
