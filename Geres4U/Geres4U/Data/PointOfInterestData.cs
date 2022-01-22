@@ -25,6 +25,16 @@ namespace Geres4U.Data
             return _db.LoadData<PointOfInterestDataModel, dynamic>(sql, new { });
         }
 
+        public Task<List<PointOfInterestDataModel>> GetPointOfInterestWithAllFields(PointOfInterestDataModel p)
+        {
+            string quote = "\'";
+            string lat = p.Lat.ToString().Replace(',', '.');
+            string lon = p.Long.ToString().Replace(',', '.');
+            //string sql = "SELECT* FROM geres4udb.pointofinterest WHERE(`Name` = " + quote + "CascataVermelha" + quote + " AND `Lat` = '20') AND(`Long` = '20' AND `isSugestion` = '0') LIMIT 0, 100000";
+            string sql = "SELECT* FROM geres4udb.pointofinterest WHERE(`Name` = " + quote + p.Name + quote + " AND `Lat` = '" + lat + "') AND(`Long` = '" + lon + "' AND `isSugestion` = '" + p.isSugestion + "') LIMIT 0, 100000";
+            return _db.LoadData<PointOfInterestDataModel, dynamic>(sql, new { });
+        }
+
         public Task<List<PointOfInterestDataModel>> getPointOfInterest(PointOfInterestDataModel p)
         {
             string sql = @"SELECT * FROM geres4udb.pointofinterest WHERE ID = " + p.ID;

@@ -217,7 +217,11 @@ namespace Geres4U.Controllers
             if (pidm.Description != null)
                 await pid.InsertPointOfInterestSugestion(pidm);
             else await pid.InsertPointOfInterestSugestionWithoutDescription(pidm);
-            await picd.InsertCategory(new PointOfInterestCategoryDataModel(categoryId, pidm.ID));
+            List<PointOfInterestDataModel> insertedPoint = pid.GetPointOfInterestWithAllFields(pidm).Result;
+            foreach (PointOfInterestDataModel pID in insertedPoint)
+            {
+                await picd.InsertCategory(new PointOfInterestCategoryDataModel(categoryId, pID.ID));
+            }
             return true;
         }
 
