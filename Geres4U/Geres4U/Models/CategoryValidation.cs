@@ -13,7 +13,7 @@ namespace Geres4U.Models
             String cat = (String) value;
             Category c = new Category(cat);
             if (c.Id != -1) return true;
-            else return false;
+            return false;
         }
     }
 }
