@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace Geres4U.Models
 {
@@ -7,7 +6,7 @@ namespace Geres4U.Models
     {
         [Display(Name = "Id")]
         [Required(ErrorMessage = "You need to provide the id of the point of interest to update.")]
-        public int Id;
+        public int Id { get; set; }
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "You need to provide the name of the point of interest.")]

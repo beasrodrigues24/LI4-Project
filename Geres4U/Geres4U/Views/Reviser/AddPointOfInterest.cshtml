@@ -1,25 +1,31 @@
-﻿@model Geres4U.Models.PointOfInterestSugestion
+﻿@model Geres4U.Models.PointOfInterestByReviser
 
 @{
-    ViewData["Title"] = "SuggestPointOfInterest";
-    Layout = "_LayoutLoggedIn";
+    ViewData["Title"] = "AddPointOfInterest";
 }
 
-<h1>Sugerir um novo ponto de interesse:</h1>
+<h1>AddPointOfInterest</h1>
 
+@if (ViewBag.result != null)
+{
+    <p>@ViewBag.result</p>
+}
 
-<p>Categorias disponíveis</p>
-    <a>Monumentos, ...</a>
-
+<h4>PointOfInterestByReviser</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="SuggestPointOfInterest">
+        <form asp-action="AddPointOfInterest">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Lat" class="control-label"></label>
@@ -32,17 +38,17 @@
                 <span asp-validation-for="Long" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Sugerir" class="btn btn-primary" />
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn btn-primary" />
             </div>
         </form>
     </div>

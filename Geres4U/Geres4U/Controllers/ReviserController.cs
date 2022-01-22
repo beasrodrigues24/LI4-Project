@@ -176,11 +176,18 @@ namespace Geres4U.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult RemovePointOfInterest(int id)
+        public IActionResult RemovePointOfInterest(PointOfInterestRemoval p)
         {
-            bool res = RemovePointOfInterestDB(id);
-            ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
-            return View("Index");
+            if (ModelState.IsValid)
+            {
+                bool res = RemovePointOfInterestDB(p.id);
+                ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
+                return View("Index");
+
+            }
+
+            ViewBag.result = "Opções inválidas.";
+            return View("RemovePointOfInterest");
         }
 
         public bool AddPointOfInterestToDB(PointOfInterestDataModel p, int cat)
@@ -200,7 +207,6 @@ namespace Geres4U.Controllers
 
         public IActionResult AddPointOfInterest()
         {
-            ViewBag.Message = "AddPointOfInterest";
             return View();
         }
 
@@ -208,16 +214,22 @@ namespace Geres4U.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddPointOfInterest(PointOfInterestByReviser p)
         {
-            Category c = new Category(p.Category);
-            PointOfInterestDataModel pidm = new PointOfInterestDataModel(-1, p.Name, p.ImagePath, p.Lat, p.Long, 0, p.Description);
-            bool res = AddPointOfInterestToDB(pidm, c.Id);
-            ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
-            return View("Index");
+            if (ModelState.IsValid)
+            {
+                Category c = new Category(p.Category);
+                PointOfInterestDataModel pidm = new PointOfInterestDataModel(-1, p.Name, p.ImagePath, p.Lat, p.Long, 0, p.Description);
+                bool res = AddPointOfInterestToDB(pidm, c.Id);
+                ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
+                return View("Index");
+            }
+
+            ViewBag.result = "Opções inválidas";
+            return View("AddPointOfInterest");
+            
         }
 
         public IActionResult UpdatePointOfInterest()
         {
-            ViewBag.Message = "UpdatePointOfInterest";
             return View();
         }
 
@@ -237,11 +249,17 @@ namespace Geres4U.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult UpdatePointOfInterest(PointOfInterestToUpdate p)
         {
-            PointOfInterestDataModel pdm =
-                new PointOfInterestDataModel(p.Id, p.Name, p.ImagePath, p.Lat, p.Long, 0, p.Description);
-            bool res = UpdatePointOfInterestOnDB(pdm).Result;
-            ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
-            return View("Index");
+            if (ModelState.IsValid)
+            {
+                PointOfInterestDataModel pdm =
+                    new PointOfInterestDataModel(p.Id, p.Name, p.ImagePath, p.Lat, p.Long, 0, p.Description);
+                bool res = UpdatePointOfInterestOnDB(pdm).Result;
+                ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
+                return View("Index");
+            }
+
+            ViewBag.result = "Opções inválidas";
+            return View("UpdatePointOfInterest");
         }
 
         public async Task<bool> AddCategoryToPointOnDB(PointOfInterestCategoryDataModel p)

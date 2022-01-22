@@ -25,6 +25,7 @@ namespace Geres4U.Models
 
         [Display(Name = "Categoria")]
         [CategoryValidation(ErrorMessage = "A Categoria inserida é inválida.")]
+        [Required(ErrorMessage = "Obrigatório inserir uma categoria.")]
         public string Category { get; set; }
     }
 }
