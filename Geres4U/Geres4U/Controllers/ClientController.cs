@@ -210,12 +210,14 @@ namespace Geres4U.Controllers
             return View();
         }
 
-        public async Task<bool> AddPointOfInterestSugestionToDB(PointOfInterestDataModel pidm)
+        public async Task<bool> AddPointOfInterestSugestionToDB(PointOfInterestDataModel pidm, int categoryId)
         {
             PointOfInterestData pid = new PointOfInterestData(_db);
+            PointOfInterestCategoryData picd = new PointOfInterestCategoryData(_db);
             if (pidm.Description != null)
                 await pid.InsertPointOfInterestSugestion(pidm);
             else await pid.InsertPointOfInterestSugestionWithoutDescription(pidm);
+            await picd.InsertCategory(new PointOfInterestCategoryDataModel(categoryId, pidm.ID));
             return true;
         }
 
@@ -225,9 +227,10 @@ namespace Geres4U.Controllers
         {
             if (ModelState.IsValid)
             {
+                Category c = new Category(p.Category);
                 PointOfInterestDataModel pidm =
                     new PointOfInterestDataModel(-1, p.Name, null, p.Lat, p.Long, 1, p.Description);
-                bool flag = AddPointOfInterestSugestionToDB(pidm).Result;
+                bool b1 = AddPointOfInterestSugestionToDB(pidm, c.Id).Result;
                 return RedirectToAction("Index"); // TODO
             }
             return View();

@@ -23,6 +23,8 @@ namespace Geres4U.Models
         [MaxLength(255)]
         public string Description { get; set; }
 
-        public Category Category { get; set; }
+        [Display(Name = "Categoria")]
+        [CategoryValidation(ErrorMessage = "A Categoria inserida é inválida.")]
+        public string Category { get; set; }
     }
 }

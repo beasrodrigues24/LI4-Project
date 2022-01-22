@@ -183,16 +183,18 @@ namespace Geres4U.Controllers
             return View("Index");
         }
 
-        public bool AddPointOfInterestToDB(PointOfInterestDataModel p)
+        public bool AddPointOfInterestToDB(PointOfInterestDataModel p, int cat)
         {
             PointOfInterestData pd = new PointOfInterestData(_db);
+            PointOfInterestCategoryData picd = new PointOfInterestCategoryData(_db);
             if (p.Description != null && p.Images != null)
             {
                 pd.InsertPointOfInterestWithoutDescriptionAndImage(p);
             }
             else if (p.Description != null) pd.InsertPointOfInterestWithDescriptionWithoutImage(p);
+            else if (p.Images != null) pd.InsertPointOfInterestSugestionWithoutDescription(p);
             else pd.InsertPointOfInterestWithDescriptionAndImagePath(p);
-
+            picd.InsertCategory(new PointOfInterestCategoryDataModel(cat, p.ID));
             return true;
         }
 
@@ -206,8 +208,9 @@ namespace Geres4U.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddPointOfInterest(PointOfInterestByReviser p)
         {
+            Category c = new Category(p.Category);
             PointOfInterestDataModel pidm = new PointOfInterestDataModel(-1, p.Name, p.ImagePath, p.Lat, p.Long, 0, p.Description);
-            bool res = AddPointOfInterestToDB(pidm);
+            bool res = AddPointOfInterestToDB(pidm, c.Id);
             ViewBag.result = (res ? "Operação efetuada com sucesso" : "Erro");
             return View("Index");
         }
