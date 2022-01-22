@@ -5,7 +5,7 @@
     Layout = "_LayoutAdmin";
 }
 
-<h1>Remover ponto</h1>
+<h1 style="position:absolute;left:400px;top:85px;font-size:18px;font-weight:bold">Remover ponto</h1>
 
 @if (ViewBag.result != null)
 {
@@ -18,18 +18,18 @@
         <form asp-action="RemovePointOfInterest">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="id" class="control-label"></label>
-                <input asp-for="id" class="form-control" />
-                <span asp-validation-for="id" class="text-danger"></span>
+                <label asp-for="id" class="control-label" style="position:absolute;left:390px;top:100px;font-weight:bold"></label>
+                <input asp-for="id" placeholder="Escreva aqui" class="form-control" style="position: absolute;width: 527px;height: 33px;left: 450px;top: 100px;background: #2E2E2E;border-radius: 17.5px;" />
+                <span asp-validation-for="id" class="text-danger" style="position:absolute;left:470px;top:140px"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Remover" class="btn btn-primary" />
+                <input type="submit" value="Remover" class="btn btn-primary" style="position:absolute;color:white;background-color:black;left:650px;top:155px"/>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Voltar</a>
+    <a asp-action="Index" style="position:absolute;color:black;font-weight:bold;left:450px;top:650px">Voltar</a>
 </div>
 

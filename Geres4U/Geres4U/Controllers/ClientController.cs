@@ -235,8 +235,11 @@ namespace Geres4U.Controllers
                 PointOfInterestDataModel pidm =
                     new PointOfInterestDataModel(-1, p.Name, null, p.Lat, p.Long, 1, p.Description);
                 bool b1 = AddPointOfInterestSugestionToDB(pidm, c.Id).Result;
-                return RedirectToAction("Index"); // TODO
+                ViewBag.result = (b1 ? "Submetida com sucesso" : "Erro");
+                if (b1) return RedirectToAction("Index");
+                else return View();
             }
+            ViewBag.result = "Campos inválidos";
             return View();
         }
 
