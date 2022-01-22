@@ -30,7 +30,6 @@ namespace Geres4U.Data
             string quote = "\'";
             string lat = p.Lat.ToString().Replace(',', '.');
             string lon = p.Long.ToString().Replace(',', '.');
-            //string sql = "SELECT* FROM geres4udb.pointofinterest WHERE(`Name` = " + quote + "CascataVermelha" + quote + " AND `Lat` = '20') AND(`Long` = '20' AND `isSugestion` = '0') LIMIT 0, 100000";
             string sql = "SELECT* FROM geres4udb.pointofinterest WHERE(`Name` = " + quote + p.Name + quote + " AND `Lat` = '" + lat + "') AND(`Long` = '" + lon + "' AND `isSugestion` = '" + p.isSugestion + "') LIMIT 0, 100000";
             return _db.LoadData<PointOfInterestDataModel, dynamic>(sql, new { });
         }

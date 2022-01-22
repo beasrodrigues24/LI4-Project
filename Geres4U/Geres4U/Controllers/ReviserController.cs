@@ -201,7 +201,6 @@ namespace Geres4U.Controllers
             else if (p.Description != null) pd.InsertPointOfInterestWithDescriptionWithoutImage(p);
             else if (p.Images != null) pd.InsertPointOfInterestSugestionWithoutDescription(p);
             else pd.InsertPointOfInterestWithDescriptionAndImagePath(p);
-            // PointOfInterestData pd2 = new PointOfInterestData(_db);
             List<PointOfInterestDataModel> insertedPoint = pd.GetPointOfInterestWithAllFields(p).Result;
             foreach (PointOfInterestDataModel pID in insertedPoint)
             {
