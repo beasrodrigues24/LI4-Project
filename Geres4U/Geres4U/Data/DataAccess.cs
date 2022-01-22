@@ -28,14 +28,14 @@ namespace Geres4U.Data
 
         public async Task SaveData<T>(string sql, T parameters)
         {
-            try
-            {
+            //try
+            //{
                 using (IDbConnection connection = new MySqlConnection(ConnectionString))
                 {
                     await connection.ExecuteAsync(sql, parameters);
                 }
-            }
-            catch (Exception ignored) { }
+            //}
+            //catch (Exception ignored) { }
 
         }
     }

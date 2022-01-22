@@ -90,7 +90,7 @@ namespace Geres4U.Data
         {
             string lat = pointOfInterest.Lat.ToString().Replace(',', '.');
             string lon = pointOfInterest.Long.ToString().Replace(',', '.');
-            string sql = "UPDATE `geres4udb`.`pointofinterest` SET `Name` = @Name, `Lat` = '" + lat + "', `Long` = '" + lon + "', `isSugestion` = '0', `Description` = @Description WHERE(`ID` = '" + pointOfInterest.ID + "')";
+            string sql = "UPDATE `geres4udb`.`pointofinterest` SET `Name` = @Name, `Lat` = '" + lat + "', `Long` = '" + lon + "', `isSugestion` = '0', `Description` = @Description WHERE(`ID` = '" + pointOfInterest.ID +"')";
             return _db.SaveData(sql, pointOfInterest);
         }
 
@@ -98,7 +98,7 @@ namespace Geres4U.Data
         {
             string lat = pointOfInterest.Lat.ToString().Replace(',', '.');
             string lon = pointOfInterest.Long.ToString().Replace(',', '.');
-            string sql = "UPDATE `geres4udb`.`pointofinterest` SET `Name` = @Name, `Lat` = '" + lat + "', `Long` = '" + lon + "', `isSugestion` = '0', WHERE(`ID` = '" + pointOfInterest.ID + "')";
+            string sql = "UPDATE `geres4udb`.`pointofinterest` SET `Name` = CascataAlterada, `Lat` = '" + lat + "', `Long` = '" + lon + "', `isSugestion` = '0', WHERE(`ID` = '" + pointOfInterest.ID + "')";
             return _db.SaveData(sql, pointOfInterest);
         }
 

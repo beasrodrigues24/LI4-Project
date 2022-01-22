@@ -12,5 +12,11 @@ namespace Geres4U.Data.DataModels
             ClientID = clientID;
             PointOfInterestID = pointOfInterestId;
         }
+
+        public ClientHistoryDataModel(int pointOfInterestID)
+        {
+            ClientID = "";
+            PointOfInterestID = pointOfInterestID;
+        }
     }
 }

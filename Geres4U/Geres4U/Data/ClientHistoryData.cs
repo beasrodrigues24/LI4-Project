@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using Geres4U.Data.DataModels;
 
@@ -34,6 +35,12 @@ namespace Geres4U.Data
             string quote = "\"";
             string sql = @"DELETE FROM geres4udb.clienthistory 
                            WHERE ClientID = " + quote + client.ClientID  + quote + " AND PointOfInterestID = " + client.PointOfInterestID;
+            return _db.SaveData(sql, client);
+        }
+
+        public Task RemoveHistoryFromPointOfInterest(ClientHistoryDataModel client)
+        {
+            string sql = "DELETE FROM geres4udb.clienthistory WHERE (`PointOfInterestID` = '" + client.PointOfInterestID + "')";
             return _db.SaveData(sql, client);
         }
 

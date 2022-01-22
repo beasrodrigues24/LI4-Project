@@ -128,11 +128,11 @@ namespace Geres4U.Controllers
             {
                 PointOfInterestDataModel p = new PointOfInterestDataModel(pidm.ID, pidm.Name, pidm.Images, pidm.Lat,
                     pidm.Long, 0, pidm.Description);
-                if (p.Description != null && p.Images != null)
+                if (p.Description == null && p.Images == null)
                 {
                     pd.UpdatePointOfInterestWithoutImagePathAndDescription(p);
                 }
-                else if (p.Description != null)pd.UpdatePointOfInterestWithoutImagePath(p);
+                else if (p.Description != null) pd.UpdatePointOfInterestWithoutImagePath(p);
                 else pd.UpdatePointOfInterest(p);
             }
             return true;
@@ -149,12 +149,14 @@ namespace Geres4U.Controllers
         {
             PointOfInterestData pd = new PointOfInterestData(_db);
             PointOfInterestCategoryData pcd = new PointOfInterestCategoryData(_db);
+            ClientHistoryData chd = new ClientHistoryData(_db);
             List<PointOfInterestDataModel> pdm = pd.getPointOfInterest(new PointOfInterestDataModel(id)).Result;
             foreach (PointOfInterestDataModel pidm in pdm)
             {
-                pd.RemovePointOfInterest(new PointOfInterestDataModel(id));
+                pd.RemovePointOfInterest(pidm);
+                pcd.removeCategoryOfPoint(new PointOfInterestCategoryDataModel(pidm.ID));
+                chd.RemoveHistoryFromPointOfInterest(new ClientHistoryDataModel(pidm.ID));
             }
-            pcd.removeCategoryOfPoint(new PointOfInterestCategoryDataModel(id));
             return true;
         }
 
