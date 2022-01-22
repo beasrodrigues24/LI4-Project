@@ -25,6 +25,7 @@ namespace Geres4U.Models
         [Display(Name = "Descrição")]
         public string Description { get; set; }
 
+        [Display(Name = "Categoria")]
         public string Category { get; set; }
 
         public PointOfInterest()

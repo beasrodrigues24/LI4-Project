@@ -1,11 +1,8 @@
 ﻿using Geres4U.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Geres4U.Data;
 using Geres4U.Data.DataModels;
@@ -25,13 +22,9 @@ namespace Geres4U.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("SignIn");
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -61,9 +54,21 @@ namespace Geres4U.Controllers
         public ActionResult SignUpClient(Client c)
         {
             if (ModelState.IsValid)
-                if(SignUpClientToDB(c).Result)
-                    return RedirectToAction("Index"); // se funcionar vai dar redirect para "Index" TODO: alterar para o sítio correto de redirect
+            {
+                if (SignUpClientToDB(c).Result)
+                {
+                    return RedirectToAction("Index");
 
+                } else
+                {
+                    ViewBag.result = "Email já está em uso";
+                    return View("SignUpClient");
+                }
+                    
+               
+            }
+
+            ViewBag.result = "Credenciais inválidas";
             return View();
         }
 

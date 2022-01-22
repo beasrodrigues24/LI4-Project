@@ -4,37 +4,47 @@
     ViewData["Title"] = "SignUpClient";
 }
 
-<h1>Registar conta</h1>
+@if(ViewBag.Result != null)
+{
+    <p style="font-weight:bold;font-size:12px;position:absolute;left:700px;top:565px;color:red">@ViewBag.Result</p>
+}
+
+
+<div class="text-center">
+
+    <image src="@Url.Content("~/Images/Logo.png")" alt="Did not render" position=absolute width=296px height=291.06px left=557px top=162px ></image>
+    <h1 position=absolute width=246px height=9px left=597px top=526px font-family="Roboto Slab" font-style=normal font-weight=bold font-size=35px line-height=46px color=#000000>Efetue o seu registo</h1>
+</div>
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="text-center">
+    <div>
         <form asp-action="SignUpClient">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly"></div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+                <label asp-for="Email" class="control-label" style="font-weight:bold;position:absolute;left:620px;top:365px"></label> 
+                <input asp-for="Email" class="form-control" style="position: absolute;width:294px;height: 34px;left:620px;top:390px;background: #C4C4C4;border-radius: 10px;"/>
+                <span asp-validation-for="Email" class="text-danger" style="font-weight:bold;font-size:10px;position:absolute;left:630px;top:423px"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+                <label asp-for="Password" class="control-label" style="font-weight:bold;position:absolute;left:620px;top:430px"></label>
+                <input asp-for="Password" class="form-control" style="position: absolute;width:294px;height: 34px;left:620px;top:455px;background: #C4C4C4;border-radius: 10px;"/>
+                <span asp-validation-for="Password" class="text-danger" style="font-weight:bold;font-size:10px;position:absolute;left:630px;top:490px"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                <label asp-for="ConfirmPassword" class="control-label" style="font-weight:bold;position:absolute;left:620px;top:500px"></label>
+                <input asp-for="ConfirmPassword" class="form-control" style="position:absolute;width:294px;height:34px;left:620px;top:525px;background:#C4C4C4;border-radius:10px;" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger" style="font-weight:bold;font-size:10px;position:absolute;left:630px;top:560px"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Registar-me" class="btn btn-primary" style="font-size:12px;color:white;position:absolute;width:100px;height:61px;left:720px;top:600px;background: black;border-radius: 10px;" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Voltar</a>
+    <a asp-action="Index" style="color:black;font-weight:bold;font-size:12px;position:absolute;left:650px;top:620px">Voltar</a>
 </div>
 
 @section Scripts {
