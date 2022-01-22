@@ -133,11 +133,12 @@ namespace Geres4U.Controllers
                     pd.UpdatePointOfInterestWithoutImagePathAndDescription(p);
                 }
                 else if (p.Description != null) pd.UpdatePointOfInterestWithoutImagePath(p);
+                else if (p.Images != null) pd.UpdatePointOfInterestWithoutDescription(p);
                 else pd.UpdatePointOfInterest(p);
             }
             return true;
         }
-
+        
         public IActionResult AcceptPointOfInterestSugestion(int id)
         {
             bool res = AcceptSugestionOnDB(id);
@@ -153,9 +154,9 @@ namespace Geres4U.Controllers
             List<PointOfInterestDataModel> pdm = pd.getPointOfInterest(new PointOfInterestDataModel(id)).Result;
             foreach (PointOfInterestDataModel pidm in pdm)
             {
-                pd.RemovePointOfInterest(pidm);
                 pcd.removeCategoryOfPoint(new PointOfInterestCategoryDataModel(pidm.ID));
                 chd.RemoveHistoryFromPointOfInterest(new ClientHistoryDataModel(pidm.ID));
+                pd.RemovePointOfInterest(pidm);
             }
             return true;
         }
