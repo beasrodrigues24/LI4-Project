@@ -7,7 +7,7 @@
 
 @if(ViewBag.Result != null)
 {
-    <p style="font-weight:bold;font-size:14px;position:absolute;left:700px;top:515px;color:red;">@ViewBag.Result</p>
+    <p style="font-weight:bold;font-size:14px;position:absolute;left:900px;top:515px;color:red;">@ViewBag.Result</p>
 }
 
 <div class="text-center">
@@ -22,19 +22,19 @@
         <form asp-action="SignIn">
             <div asp-validation-summary="ModelOnly"></div>
             <div>
-                <input asp-for="Email" placeholder="Email" style="position:absolute;width:294px;height:61px;left:620px;top:370px;background:#C4C4C4;border-radius:10px;"/>
-                <span asp-validation-for="Email" class="text-danger" style="font-weight:bold;font-size:10px;position:absolute;left:640px;top:430px;"></span>
+                <input asp-for="Email" placeholder="Email" style="position:absolute;width:294px;height:61px;left:820px;top:370px;background:#C4C4C4;border-radius:10px;"/>
+                <span asp-validation-for="Email" class="text-danger" style="font-weight:bold;font-size:10px;position:absolute;left:840px;top:430px;"></span>
             </div>
             <div class="form-group">
-                <input asp-for="Password" placeholder="Password" style="position: absolute;width: 294px;height: 61px;left:620px;top:450px;background: #C4C4C4;border-radius: 10px;" />
-                <span asp-validation-for="Password" class="text-danger" style="font-weight:bold;font-size:10px;position:absolute;left:640px;top:515px;"></span>
+                <input asp-for="Password" placeholder="Password" style="position: absolute;width: 294px;height: 61px;left:820px;top:450px;background: #C4C4C4;border-radius: 10px;" />
+                <span asp-validation-for="Password" class="text-danger" style="font-weight:bold;font-size:10px;position:absolute;left:840px;top:715px;"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" style="color:white;position:absolute;width:100px;height:61px;left: 720px;top: 550px;background: black;border-radius: 10px;" />
+                <input type="submit" value="Login" class="btn btn-primary" style="color:white;position:absolute;width:100px;height:61px;left: 920px;top: 550px;background: black;border-radius: 10px;" />
             </div>
         </form>
 
-        <p style="position:absolute;left:640px;top:630px">Não tens conta?</p><a asp-action="SignUpClient" style="font-weight:bold;color:black;position:absolute;left:760px;top:630px">Regista-te aqui</a>
+        <p style="position:absolute;left:840px;top:630px">Não tens conta?</p><a asp-action="SignUpClient" style="font-weight:bold;color:black;position:absolute;left:960px;top:630px">Regista-te aqui</a>
 
     </div>
 
