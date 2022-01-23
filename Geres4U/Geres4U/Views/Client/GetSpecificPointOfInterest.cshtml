@@ -3,57 +3,40 @@
 @{
     ViewData["Title"] = "GetSpecificPointOfInterest";
     Layout = "_LayoutLoggedIn";
+    string categoryString = "Categoria: " + @Model.Category;
 }
 
-<h1>Ponto</h1>
+<h1 style="position: absolute; left: 600px; top: 150px;">Ponto de interesse</h1>
 
 <div>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
+    <dl class="row" style="position: absolute; top: 200px; left: 600px;">
+        <dd class = "col-sm-10" style="font-weight: bold; color: green; font-size: 20px;padding:30px"> 
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImagePath)
+            @if (!String.IsNullOrEmpty(Model.ImagePath)) { 
+                <img src="@Url.Content("~/Images/" + @Model.ImagePath + ".png")"  alt=@Model.ImagePath width="256px" height="256px"/>
+            }
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Lat)
-        </dt>
+        <dd class = "col-sm-10" style="padding: 30px">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dd class="col-sm-10" style="font-weight: bold;padding:10px">
+            @Html.Raw("Coordenadas:")
+        </dd>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Lat)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Long)
-        </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-10" style="padding-bottom:50px">
             @Html.DisplayFor(model => model.Long)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
+        <dd class="col-sm-10" style="width: 100px; height: 37px; background: #000000; border-radius: 17.5px; color: white;">
+            
+            @Html.Raw(categoryString)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action=@ViewBag.returning>Voltar</a>
+    <a asp-action=@ViewBag.returning style="position: absolute; left: 500px; top: 100px; color: black;font-weight:bold">Voltar</a>
 </div>
