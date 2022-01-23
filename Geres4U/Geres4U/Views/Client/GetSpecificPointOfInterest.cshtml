@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "GetSpecificPointOfInterest";
     Layout = "_LayoutLoggedIn";
-    string categoryString = "Categoria: " + @Model.Category;
+    string categoryString = "Categoria: " + @Model.translateCategory();
 }
 
 <h1 style="position: absolute; left: 600px; top: 150px;">Ponto de interesse</h1>

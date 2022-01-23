@@ -202,7 +202,7 @@ namespace Geres4U.Controllers
         public IActionResult GetPointsOfInterestFromCategory(string category)
         {
             List<PointOfInterest> points = GetPointsOfInterestFromCategoryDB(category);
-            return View(points);
+            return View("GetPointsOfInterest", points);
         }
            
         public IActionResult SuggestPointOfInterest()

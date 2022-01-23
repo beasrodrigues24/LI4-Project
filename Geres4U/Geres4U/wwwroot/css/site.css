@@ -1,5 +1,4 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
   white-space: normal;
@@ -13,7 +12,7 @@ a {
 }
 
 .btn-primary {
-  color: #fff;
+  color: black;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
@@ -73,7 +72,7 @@ body {
 * Dropdown Button */
 .btn {
     background-color: #2196F3;
-    color: white;
+    color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -90,7 +89,7 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: black;
     min-width: 160px;
     z-index: 1;
 }
@@ -105,7 +104,7 @@ body {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: #ddd
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
 /* Show the dropdown menu on hover */
@@ -115,5 +114,5 @@ body {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .btn:hover, .dropdown:hover .btn {
-    background-color: #0b7dda;
+    background-color: rgba(0, 0, 0, 0.75);
 }

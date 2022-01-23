@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Geres4U.Models
 {
@@ -43,6 +45,21 @@ namespace Geres4U.Models
             IsSugestion = isSugestion;
             Description = description;
             Category = "";
+        }
+
+        public string translateCategory()
+        {            
+            switch (Category)
+            {
+                case "Passadicos": return "Passadiços";
+                case "ArteRupestre": return "Arte Rupestre";
+                case "EdificioRestauracao": return "Edifício Restauração";
+                case "EdificioReligioso": return "Edifício Religioso";
+                case "PraiaFluvial": return "Praia Fluvial";
+                case "ParqueLazer": return "Parque de Lazer";
+                case "ParqueNatural": return "Parque Natural";
+                default: return Category;
+            }
         }
     }
 }
