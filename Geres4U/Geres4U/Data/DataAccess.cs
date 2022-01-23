@@ -10,7 +10,6 @@ namespace Geres4U.Data
 {
     public class DataAccess : IDataAccess
     {
-        //private readonly IConfiguration _config;
 
         public string ConnectionString { get; set; } = "server=localhost;user=geres4u;database=geres4udb;password=Geres4U1234;port=3306";
 
@@ -28,14 +27,14 @@ namespace Geres4U.Data
 
         public async Task SaveData<T>(string sql, T parameters)
         {
-            //try
-            //{
+            try
+            {
                 using (IDbConnection connection = new MySqlConnection(ConnectionString))
                 {
                     await connection.ExecuteAsync(sql, parameters);
                 }
-            //}
-            //catch (Exception ignored) { }
+            }
+            catch (Exception ignored) { }
 
         }
     }
