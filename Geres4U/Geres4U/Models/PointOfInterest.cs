@@ -2,6 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CodeActions;
+using Microsoft.CodeAnalysis.Operations;
+using Org.BouncyCastle.Crypto.Prng;
 
 namespace Geres4U.Models
 {
@@ -60,6 +63,16 @@ namespace Geres4U.Models
                 case "ParqueNatural": return "Parque Natural";
                 default: return Category;
             }
+        }
+
+        public string GetLatString()
+        {
+            return Lat.ToString().Replace(",", ".");
+        }
+        
+        public string GetLonString()
+        {
+            return Long.ToString().Replace(",", ".");
         }
     }
 }

@@ -1,15 +1,17 @@
-﻿@model Geres4U.Models.PointOfInterest
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding.Validation
+@model Geres4U.Models.PointOfInterest
 
 @{
     ViewData["Title"] = "GetSpecificPointOfInterest";
     Layout = "_LayoutLoggedIn";
     string categoryString = "Categoria: " + @Model.translateCategory();
+    var coordinatesString = "https://maps.google.com/?q=" + @Model.GetLatString() + "," + @Model.GetLonString();
 }
 
 <h1 style="position: absolute; left: 600px; top: 150px;">Ponto de interesse</h1>
 
+
 <div>
-    <hr />
     <dl class="row" style="position: absolute; top: 200px; left: 600px;">
         <dd class = "col-sm-10" style="font-weight: bold; color: green; font-size: 20px;padding:30px"> 
             @Html.DisplayFor(model => model.Name)
@@ -27,14 +29,15 @@
         </dd>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Lat)
+            <a href=@coordinatesString target="_blank" class="btn btn-primary" style="position: relative; text-align: center; left: 120px; top: 20px; height: 50px;background: #F2B23E; border-radius: 17.5px; color: white;">Abrir no Maps</a>
         </dd>
-        <dd class = "col-sm-10" style="padding-bottom:50px">
+        <dd class = "col-sm-10" style="padding-bottom: 50px;height:100px">
             @Html.DisplayFor(model => model.Long)
         </dd>
-        <dd class="col-sm-10" style="width: 100px; height: 37px; background: #000000; border-radius: 17.5px; color: white;">
-            
+        <dd class="col-sm-4" style="width: 100px; height: 37px; background: #000000; border-radius: 17.5px; color: white;">
             @Html.Raw(categoryString)
         </dd>
+
     </dl>
 </div>
 <div>
