@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "GetSpecificPointOfInterest";
     Layout = "_LayoutAdmin";
-    string categoryString = "Categoria: " + @Model.Category;
+    string categoryString = "Categoria: " + @Model.translateCategory();
     var coordinatesString = "https://maps.google.com/?q=" + @Model.GetLatString() + "," + @Model.GetLonString();
     var idString = "ID: " + @Model.Id;
 
