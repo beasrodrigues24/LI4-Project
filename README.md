@@ -13,4 +13,4 @@ Done in the context of Informatic Labs IV in University of Minho..
 [João Pedro Rodrigues Carvalho](https://github.com/joaoca93166)
 
 
-Grade: /20
+Grade: 16/20
